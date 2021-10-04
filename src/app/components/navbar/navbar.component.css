@@ -1,33 +1,115 @@
-.navbar, .btn-primary-color{
-    background-color: #0ABAB5 !important;
-    color: white !important;
-    padding: 0 !important;
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap');
+
+
+span{
+    font-size: 1.5rem;
+    font-family: 'Montserrat', sans-serif !important;
+}
+
+
+
+.logo-container{
+    max-width: 178px;
+    width: 100%;
+    position: relative;
+    margin-left: 8px;
+    cursor: pointer;
 }
 
 .logo{
-    height: 100%;
-    width: 70px;
-    image-rendering:optimizeQuality;
-    cursor: pointer;
+    height: 92px;
+    margin-bottom: 10px;
+    position: absolute;
+    right: 95px;
 }
 
 .logo-text{
-    font-size: 2.4rem;
-    color: rgb(235, 232, 232);
-    font-weight: 700;
-    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 3.4rem;
+    margin-top: 9px;
+    z-index:1 ;
+    font-size: 4.8rem;
+}
+
+.btn{
+    font-size: 1.5rem !important;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .btn-outline-tiffany{
     border:solid 2px #71eeea  !important ;
     background-color: #71eeea    !important;
-    color: rgb(34, 32, 32) !important;
-
+    color: #363636;
 }
 
 .btn-outline-tiffany:hover{
     border:solid 2px #098383  !important  ;
     color: #f1f7f6 !important;
     background-color: #098383    !important;
+}
+
+mat-toolbar {
+    background: #0ABAB5;
+    color: white;
+    padding: 42px 0px !important;   
+}
+
+mat-sidenav {
+    margin: 0px;
+    width: 225px;
+    border-right: none;
+    background: #0ABAB5;
+    color: white;
+    border-radius: 0px;
+    padding: 16px;
+    text-align: center;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+
+}
+
+mat-sidenav-container {
+    height: calc(100vh - 65px);
+}
+
+.menu-button {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    font-size: 1rem;
+
+}
+
+mat-icon {
+    margin-right: 8px;
+}
+
+.avatar {
+    margin-top: 16px;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+.name {
+    margin-top: 8px;
+    font-weight: normal;
+    font-size: 1.6rem;
+}
+
+.designation {
+    margin-top: 2px;
+    font-size: 0.7rem;
+    color: lightgrey;
+    font-size: 1.3rem;
+}
+
+mat-divider {
+    margin-top: 16px;
+    margin-bottom: 16px;
+    background-color: rgba(255, 255, 255, 0.5);
 }
 
