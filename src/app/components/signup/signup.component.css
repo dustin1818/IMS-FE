@@ -1,13 +1,14 @@
 *{
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Montserrat', sans-serif !important;
 }
+
 
 .btn{
     text-decoration: none;
     background-color: #0ABAB5 !important;
     color: #f8f8f8;
+    font-size: 1.8rem;
 }
-
 
 .text-link{
     text-decoration: none;
@@ -19,4 +20,12 @@
     font-size: large;
     transition: .3s all;
 
+}
+
+label{
+    font-size: 1.6rem;
+}
+
+input{
+    font-size: 1.3rem;
 }

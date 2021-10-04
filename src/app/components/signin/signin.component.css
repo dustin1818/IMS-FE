@@ -1,10 +1,19 @@
 *{
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Montserrat', sans-serif !important;
 }
 
 .btn{
     text-decoration: none;
     background-color: #0ABAB5 !important;
     color: #f8f8f8;
+    font-size: 1.8rem;
+}
+
+label{
+    font-size: 1.6rem;
+}
+
+input{
+    font-size: 1.3rem;
 }
 
