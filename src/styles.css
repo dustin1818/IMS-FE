@@ -11,3 +11,13 @@
     --primary-color:#0ABAB5 !important;
     
 }
+html, body { height: 100%; 
+    font-family: 'Montserrat', sans-serif !important;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-size: 62.5%;
+    
+}
+
+
