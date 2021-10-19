@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MainRoutingModule } from './main/main-routing.module';
-import { MainModule } from './main/main.module';
+import { FormsModule } from '@angular/forms'
 
+//import components
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
@@ -10,21 +12,27 @@ import { SigninComponent } from './components/signin/signin.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ProfileComponent } from './components/profile/profile.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { EmployeeComponent } from './components/employee/employee.component';
+import { InventoryComponent } from './components/inventory/inventory.component';
+import { SupplierModal } from './components/supplier-modal/supplier-modal.component';
+import { SupplierComponent } from './components/supplier/supplier.component';
+import { HelpComponent } from './components/help/help.component';
+import { AboutComponent } from './components/about/about.component';
 
+//material
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
-import {MatCardModule} from '@angular/material/card';
-import { MatTableModule } from '@angular/material/table';
-import {MatSortModule} from '@angular/material/sort';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
 import { CommonModule } from '@angular/common';
-import { EmployeeComponent } from './components/employee/employee.component';
-import { SupplierComponent } from './components/supplier/supplier.component';
-import { InventoryComponent } from './components/inventory/inventory.component';
-
+import { ToastrModule } from 'ngx-toastr';
+import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -36,23 +44,30 @@ import { InventoryComponent } from './components/inventory/inventory.component';
     FooterComponent,
     ProfileComponent,
     EmployeeComponent,
+    InventoryComponent,
+    SupplierModal,
     SupplierComponent,
-    InventoryComponent
+    HelpComponent,
+    AboutComponent,
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     MainRoutingModule,
-    MainModule,
     BrowserAnimationsModule,
+    ToastrModule.forRoot(),
     CommonModule,
     MatToolbarModule,
     MatSidenavModule,
     MatButtonModule,
     MatIconModule,
     MatDividerModule,
-    MatCardModule,
-    MatSortModule,
-    MatTableModule
+    MatFormFieldModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+    Ng2SearchPipeModule,
+    MatInputModule,
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]
