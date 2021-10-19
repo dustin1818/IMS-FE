@@ -1,0 +1,62 @@
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-6 offset-lg-3">
+            <div class="card">
+                <div class="card-body text-center">
+
+                    <!-- Header ---section -->
+                    <span class="titulo"> {{ title | uppercase }}</span>
+                    <form class="mt-3" [formGroup]="supplierForm" (ngSubmit)="addSupplier()">
+
+                        <!-- supplier-no ---section -->
+                        <div class="mb-3">
+                            <input type="number" formControlName="supplier_no" class="form-control form-control-lg"
+                                placeholder="supplier_no">
+                            <div class="text-danger"
+                                *ngIf="supplierForm.get('supplier_no')?.hasError('required') && supplierForm.get('supplier_no')?.touched">
+                                <span>Supplier Number <strong>is required</strong></span>
+                            </div>
+                        </div>
+
+                         <!-- NAME ---section -->
+                        <div class="mb-3">
+                            <input type="text" formControlName="name" class="form-control form-control-lg"
+                                placeholder="name">
+                            <div class="text-danger"
+                                *ngIf="supplierForm.get('name')?.hasError('required') && supplierForm.get('name')?.touched">
+                                <span>Name<strong>is required</strong></span>
+                            </div>
+                        </div>
+
+                        <!-- Phone NO. ---section -->
+                        <div class="mb-3">
+                            <input type="number" formControlName="phone_no" class="form-control form-control-lg"
+                                placeholder="phone_no">
+                            <div class="text-danger"
+                                *ngIf="supplierForm.get('phone_no')?.hasError('required') && supplierForm.get('phone_no')?.touched">
+                                <span>Phone Number <strong>is required</strong></span>
+                            </div>
+                        </div>
+
+                        <!-- Location ---section -->
+                        <div class="mb-3">
+                            <input type="text" formControlName="location" class="form-control form-control-lg"
+                                placeholder="location">
+                            <div class="text-danger"
+                                *ngIf="supplierForm.get('location')?.hasError('required') && supplierForm.get('location')?.touched">
+                                <span>Location<strong>is required</strong></span>
+                            </div>
+                        </div>
+
+
+                        <!-- Buttons ---section -->
+                        <div class="mb-3">
+                            <button routerLink="/supplier-list" class="btn btn-secondary btn-lg float-start">Cancel</button>
+                            <button type="submit" [disabled]="supplierForm.invalid" class="btn btn-success btn-lg float-end">Accept</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
