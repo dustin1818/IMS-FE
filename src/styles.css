@@ -4,7 +4,7 @@
 /* Main fonts */
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
-
+@import '~ngx-toastr/toastr';
 
 /* Main color */
 :root{
@@ -17,7 +17,34 @@ html, body { height: 100%;
     margin: 0;
     box-sizing: border-box;
     font-size: 62.5%;
+    overflow: hidden;
     
 }
+
+#toast-container > div {
+    opacity: 1;
+  }
+  .toast {
+    font-size: initial !important;
+    border: initial !important;
+    backdrop-filter: blur(0) !important;
+    z-index: 1000 !important;
+  }
+  .toast-success {
+    background-color: #51A351 !important;
+    z-index: 1000 !important;
+  }
+  .toast-error {
+    background-color: #BD362F !important;
+    z-index: 1000 !important;
+  }
+  .toast-info {
+    background-color: #0ABAB5 !important;
+    z-index: 1000 !important;
+  }
+  .toast-warning {
+    background-color: #F89406 !important;
+    z-index: 1000 !important;
+  }
 
 
