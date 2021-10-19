@@ -16,7 +16,7 @@
     
         <form class="d-flex">
           <button class="btn btn-outline-light me-2" type="submit" routerLink="/signup">Signup</button>
-          <button class="btn btn-outline-tiffany my-2 me-2 my-sm-0" type="submit" routerLink="/signin">Login</button>
+          <button class="btn btn-outline-tiffany my-2 me-2 my-sm-0" type="submit"   routerLink = '/signin' >Login</button>
         </form>
       </div>
 </mat-toolbar>
@@ -33,7 +33,7 @@
 
       <mat-divider></mat-divider>
 
-      <button mat-button class="menu-button" routerLink="/**">
+      <button mat-button class="menu-button" routerLink="/dashboard">
           <mat-icon>dashboard</mat-icon>
           <span >Dashboard</span>
       </button>
@@ -41,10 +41,12 @@
           <mat-icon>people</mat-icon>
           <span >Employee</span>
       </button>
-      <button mat-button class="menu-button" routerLink="/supplier">
-          <mat-icon>assignment</mat-icon>
-          <span >Supplier</span>
-      </button>
+
+      <button mat-button class="menu-button" routerLink="/supplier-list">
+        <mat-icon>assignment</mat-icon>
+        <span >Supplier</span>
+    </button>
+
       <button mat-button class="menu-button" routerLink="/inventory">
           <mat-icon>store</mat-icon>
           <span >Inventory</span>
@@ -61,12 +63,12 @@
 
       <mat-divider></mat-divider>
 
-      <button mat-button class="menu-button">
+      <button mat-button class="menu-button" routerLink="/help">
           <mat-icon>help</mat-icon>
           <span>Help</span>
       </button>
 
-      <button mat-button class="menu-button">
+      <button mat-button class="menu-button" routerLink="/about">
           <mat-icon>info</mat-icon>
           <span>About</span>
       </button>

@@ -15,7 +15,7 @@ export class NavbarComponent implements OnInit {
   sidenav!: MatSidenav;
   constructor(private observer: BreakpointObserver) { }
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+    
   }
 
   

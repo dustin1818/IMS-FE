@@ -3,14 +3,14 @@
 
 
 span{
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     font-family: 'Montserrat', sans-serif !important;
 }
 
 
 
 .logo-container{
-    max-width: 178px;
+    max-width: 168px;
     width: 100%;
     position: relative;
     margin-left: 8px;
@@ -58,7 +58,7 @@ mat-toolbar {
 
 mat-sidenav {
     margin: 0px;
-    width: 225px;
+    width: 195px;
     border-right: none;
     background: #0ABAB5;
     color: white;
