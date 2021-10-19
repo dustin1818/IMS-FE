@@ -1,51 +1,69 @@
-<div class="container mt-5 w-100">
-    <div class="supplier-head-container d-flex justify-content-between align-items-center">
+<div class="container mt-5 w-100 h-100">
+  <div class="supplier-head-container d-flex justify-content-between align-items-center">
     <h2 class="supplier-head-text">Supplier Management</h2>
-    <div class="btn btn-supplier">+ Add Supplier</div>
-</div>
- <hr>
-        <table  mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8 w-100">
+    <div class="btn btn-supplier" routerLink="/supplier-modal">+ Add Supplier</div>
+  </div>
 
-            <!-- Position Column -->
-            <ng-container matColumnDef="supplier_no">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header> Supplier No. </th>
-              <td mat-cell *matCellDef="let supplier"> {{supplier.supplier_no}} </td>
-            </ng-container>
-          
-            <!-- Name Column -->
-            <ng-container matColumnDef="name">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
-              <td mat-cell *matCellDef="let supplier"> {{supplier.name}} </td>
-            </ng-container>
-          
-            <!-- Weight Column -->
-            <ng-container matColumnDef="phone_no">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header> Phone No. </th>
-              <td mat-cell *matCellDef="let supplier"> {{supplier.phone_no}} </td>
-            </ng-container>
-          
-            <!-- Symbol Column -->
-            <ng-container matColumnDef="location">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header> Location </th>
-              <td mat-cell *matCellDef="let supplier"> {{supplier.location}} </td>
-            </ng-container>
+  <hr>
+  <div class="main-container w-100 d-flex justify-content-center align-items-center">
+    <div class="row w-100  d-flex flex-md-row-reverse justify-content-around align-items-center">
 
-            <ng-container matColumnDef="edit">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header> Edit </th>
-              <td mat-cell> 
-                <mat-icon>edit</mat-icon>
-              </td>
-            </ng-container>
+      <!-- card container -->
+      <div class="card mt-5 col-lg-6 mb-5 p-3">
 
-            <ng-container matColumnDef="delete ">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header> Delete </th>
-              <td mat-cell *matCellDef="let supplier"> 
-                <mat-icon>delete</mat-icon>
-              </td>
-            </ng-container>
+        <div class="card-body text-center p-2 rounded">
+          <div class="search-container d-flex w-100 rounded position-relative">
+            <mat-form-field class="w-100" appearance="fill">
+              <mat-label>Search supplier</mat-label>
+              <input matInput type="text"  [(ngModel)]="filterTerm" >
+            </mat-form-field>
+            <button class="delete-btn position-absolute border-0" (click)="filterTerm = '' " >
+            <img class="img-fluid"  src="../../../assets/images/clear.svg">
+          </button>
+          </div>
 
-          
-            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          <table *ngIf="supplierList.length > 0" class="table table-responsive mt-3 text-center">
+            <thead class="pb-5">
+              <tr>
+                <th scope="col">Supplier No.</th>
+                <th scope="col">Name</th>
+                <th scope="col">Phone No.</th>
+                <th scope="col">Location</th>
+                <th style="text-align: center;" scope="col">Icons</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr *ngFor="let supplier of supplierList  | filter:filterTerm | paginate: {itemsPerPage: 4, currentPage: p};">
+                <td class="pt-4">{{ supplier.supplier_no }}</td>
+                <td class="pt-4">{{ supplier.name }}</td>
+                <td class="pt-4">{{ supplier.phone_no }}</td>
+                <td class="pt-4">{{ supplier.location}}</td>
+
+                <!-- ICONS -->
+                <td class="icons-container d-flex justify-content-end w-100 ">
+                  <a class="px-3 py-3 " matTooltip=" Edit Supplier" [routerLink]="['/supplier-modal' , supplier._id]">
+                    <img class="icon img-fluid rounded " src="../../../assets/images/Edit-btn (1).svg"> </a>
+                  <a (click)="deleteSupplier(supplier._id)" class="px-3 py-3" matTooltip=" Delete Supplier">
+                    <img class="icon img-fluid rounded " src="../../../assets/images/delete-btn (1).svg"> </a>
+                </td>
+              </tr>
+            </tbody>
           </table>
+
+          <pagination-controls class="w-100" (pageChange) = "p = $event"></pagination-controls>
+          <h5 style="text-align: start; margin-top: 10px;" *ngIf="supplierList.length == 0">No Supplier inside the
+            container</h5>
+        </div>
+      </div>
+
+      <!-- Illustration - Container -->
+      <div class="illustration-container col-lg-6">
+        <img class="img-fluid" src="../../../assets/images/1.svg" alt="">
+      </div>
+    </div>
+    <!-- end of main container -->
+  </div>
+
+
 </div>

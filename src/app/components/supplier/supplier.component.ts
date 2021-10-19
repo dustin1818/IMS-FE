@@ -1,42 +1,52 @@
-import {AfterViewInit, Component, ViewChild} from '@angular/core';
-import {MatSort} from '@angular/material/sort';
-import {MatTableDataSource} from '@angular/material/table';
-
-export interface PeriodicElement {
-  name: string;
-  supplier_no: number;
-  phone_no: string;
-  location: string;
-}
-
-const ELEMENT_DATA: PeriodicElement[] = [
-  {supplier_no: 1, name: 'John Doe', phone_no: "09271752569", location: 'Philippines'},
-  {supplier_no: 2, name: 'Seth Rolen', phone_no: "09271752569", location: 'USA'},
-  {supplier_no: 3, name: 'Lily Collins', phone_no: "09271752569", location: 'Canada'},
-  {supplier_no: 4, name: 'Barrack Obama', phone_no:"09271752569", location: 'Balibago'},
-  {supplier_no: 5, name: 'The Rock', phone_no: "09271752569", location: 'Don Jose'},
-  {supplier_no: 6, name: 'Jack Ma', phone_no: "09271752569", location: 'Balibago'},
-  {supplier_no: 7, name: 'Alex Ten', phone_no: "09271752569", location: 'Don Bosco'},
-  {supplier_no: 8, name: 'Kata Rina', phone_no: "09271752569", location: 'Silang'},
-  {supplier_no: 9, name: 'Steve Carell', phone_no: "09271752569", location: 'Cavite'},
-  {supplier_no: 10, name: 'Steve Jobs', phone_no: "09271752569", location: 'Tagaytay'},
-];
+import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
+import { Supplier } from 'src/app/models/supplier';
+import { SupplierService } from 'src/app/services/supplier.service';
 
 
- @Component({
+@Component({
   selector: 'app-supplier',
   templateUrl: './supplier.component.html',
   styleUrls: ['./supplier.component.css']
 })
+export class SupplierComponent implements OnInit {
+  filterTerm: any;
+  supplierList: Supplier[] = [];
 
-export class SupplierComponent implements AfterViewInit {
-  displayedColumns: string[] = ['supplier_no', 'name', 'phone_no', 'location'];
-  dataSource = new MatTableDataSource(ELEMENT_DATA);
+  p:number = 1;
 
-  @ViewChild(MatSort)
-   sort: MatSort = new MatSort;
+  constructor(private _supplierService: SupplierService,
+    private toastr: ToastrService) { }
 
-  ngAfterViewInit() {
-    this.dataSource.sort = this.sort;
+  ngOnInit(): void {
+    this.getSupplier();
+    this.searchFilter();
+  }
+
+  searchFilter() {
+    this._supplierService.getSupplier().subscribe(filterTerm => {
+      console.log(filterTerm);
+      this.supplierList = filterTerm
+    })
+  }
+
+
+  getSupplier() {
+    this._supplierService.getSupplier().subscribe(data => {
+      console.log(data);
+      this.supplierList = data;
+    }, error => {
+      console.log(error);
+    })
+  }
+
+
+  deleteSupplier(id: any) {
+    this._supplierService.deleteSupplier(id).subscribe(data => {
+      this.toastr.error('Supplier has been removed!', 'Supplier Deleted.');
+      this.getSupplier();
+    }, error => {
+      console.log(error);
+    })
   }
 }
