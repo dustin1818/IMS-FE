@@ -1,81 +1,86 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
+//components
+import { WelcomeComponent } from '../components/welcome/welcome.component';
 import { SigninComponent } from '../components/signin/signin.component';
 import { SignupComponent } from '../components/signup/signup.component';
+import { NavbarComponent } from '../components/navbar/navbar.component';
+import { DashboardComponent } from '../components/dashboard/dashboard.component';
+import { EmployeeComponent } from '../components/employee/employee.component';
+import { InventoryComponent } from '../components/inventory/inventory.component';
+import { SupplierComponent } from '../components/supplier/supplier.component';
+import { SupplierModal } from '../components/supplier-modal/supplier-modal.component';
+import { ProfileComponent } from '../components/profile/profile.component';
+import { HelpComponent } from '../components/help/help.component';
+
+
+//guards
+import { AuthGuard } from '../guard/auth.guard';
+import { NotAuthGuard } from '../guard/notAuth.guard';
+import { AboutComponent } from '../components/about/about.component';
+
 
 
 // lazy loading routes
 const routes: Routes = [
+
+  {
+
+    // first route to popin after running host
+    path: '',
+    redirectTo: 'welcome',
+    pathMatch: 'full'
+  },
+  {
+    path: 'welcome',
+    component: WelcomeComponent,
+    canActivate: [NotAuthGuard]
+  },
+
+  //registration route 1st step
   {
     path: 'signin',
-    component:SigninComponent
+    component: SigninComponent,
+    canActivate: [NotAuthGuard]
   },
   {
     path: 'signup',
-    component:SignupComponent
-  },
-  {
-    path: 'employee',
-    loadChildren: () =>     import('../components/employee/routing-emp/routing-emp-routing.module')
-      .then(m => m.RoutingEmpRoutingModule)
-  },
-  {
-    path:'inventory',
-    loadChildren: () =>     import('../../app/components/inventory/routing-inv/routing-inv-routing.module')
-    .then(m => m.RoutingInvRoutingModule)
-  },
-  {
-    path:'profile',
-    loadChildren: () =>     import('../../app/components/profile/routing-prof/routing-prof-routing.module')
-    .then(m => m.RoutingProfRoutingModule)
-  },
-  {
-    path:'supplier-list',
-    loadChildren: () =>     import('../../app/components/supplier/routing-supplier/routing-supplier-routing.module')
-    .then(m => m.RoutingSupplierRoutingModule)
-  },
-  {
-    path:'supplier-modal',
-    loadChildren: () =>     import('../../app/components/supplier-modal/routing-supplier-modal/routing-supplier-modal-routing.module')
-    .then(m => m.RoutingSupplierModalRoutingModule)
+    component: SignupComponent,
+    canActivate: [NotAuthGuard]
   },
 
-  { 
-    path: 'supplier-modal/:id', 
-    loadChildren: () =>     import('../../app/components/supplier-modal/routing-supplier-modal/routing-supplier-modal-routing.module')
-    .then(m => m.RoutingSupplierModalRoutingModule)
-  },
-  { 
-    path: 'dashboard', 
-    loadChildren: () =>     import('../../app/components/dashboard/routing-dashboard/routing-dashboard-routing.module')
-    .then(m => m.RoutingDashboardRoutingModule)
-  },
-  { 
-    path: 'help', 
-    loadChildren: () =>     import('../../app/components/help/routing-help/routing-help-routing.module')
-    .then(m => m.RoutingHelpRoutingModule)
-  },
-  { 
-    path: 'about', 
-    loadChildren: () =>     import('../../app/components/about/routing-about/routing-about-routing.module')
-    .then(m => m.RoutingAboutRoutingModule)
+
+  //main route sidebar,dashboard etc.
+  {
+    path: 'user/mainbar',
+    component: NavbarComponent,
+    canActivate: [AuthGuard],
+    children: [
+      //dashboard
+      { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+      { path: 'dashboard', component: DashboardComponent, canActivateChild: [AuthGuard] },
+
+      //employee
+      { path: 'employee', component: EmployeeComponent, canActivateChild: [AuthGuard] },
+
+      //inventory
+      { path: 'inventory', component: InventoryComponent, canActivateChild: [AuthGuard] },
+
+      //supplier
+      { path: 'supplier-list', component: SupplierComponent, canActivateChild: [AuthGuard], },
+      { path: 'supplier-list/supplier-modal', component: SupplierModal, canActivateChild: [AuthGuard] },
+      { path: 'supplier-list/supplier-modal/:id', component: SupplierModal, canActivateChild: [AuthGuard] },
+
+      { path: 'profile', component: ProfileComponent, canActivateChild: [AuthGuard] },
+
+      //help and about
+      { path: 'help', component: HelpComponent, canActivateChild: [AuthGuard] },
+      { path: 'about', component: AboutComponent, canActivateChild: [AuthGuard] },
+    ]
   },
 ];
 
-
-
-// const routes: Routes = [
-
-//   { path: 'signin', component: SigninComponent },
-//   { path: 'signup', component: SignupComponent },
-//   { path: 'profile', component: ProfileComponent },
-//   { path: 'inventory', component: InventoryComponent },
-//   { path: 'employee', component: EmployeeComponent },
-//   { path: 'supplier-list', component: SupplierComponent },
-//   { path: 'supplier-modal', component: SupplierModal },
-//   { path: 'editar-producto/:id', component: SupplierModal },
-//   { path: '**', component: DashboardComponent, pathMatch: 'full' }
-// ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
