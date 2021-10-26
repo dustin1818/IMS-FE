@@ -2,6 +2,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { MatSidenav } from '@angular/material/sidenav';
 import { delay } from 'rxjs/operators';
+import { AuthenticationService } from 'src/app/services/user-authentication/authentication.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -11,12 +13,27 @@ import { delay } from 'rxjs/operators';
 })
 export class NavbarComponent implements OnInit {
 
+   
+  userProfile = {};
+
   @ViewChild(MatSidenav)
   sidenav!: MatSidenav;
-  constructor(private observer: BreakpointObserver) { }
+  constructor(private observer: BreakpointObserver,
+              private _userService: AuthenticationService,
+              private router:Router
+    ) { }
+
+
   ngOnInit(): void {
-    
+    this._userService.getUserProfile().subscribe(
+      data => {
+        this.userProfile = data
+      },
+      error => {
+        console.log(error)
+      })
   }
+
 
   
   ngAfterViewInit() {
@@ -33,5 +50,10 @@ export class NavbarComponent implements OnInit {
         }
       });
   }
+
+  logout(){
+    localStorage.clear();
+    this.router.navigate(['/signin'])
+}
 
 }
