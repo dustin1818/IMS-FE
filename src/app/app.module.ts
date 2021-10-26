@@ -5,7 +5,9 @@ import { MainRoutingModule } from './main/main-routing.module';
 import { FormsModule } from '@angular/forms'
 
 //import components
+import { WelcomeComponent } from './components/welcome/welcome.component';
 import { AppComponent } from './app.component';
+import { AboutComponent } from './components/about/about.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { SigninComponent } from './components/signin/signin.component';
@@ -17,7 +19,6 @@ import { InventoryComponent } from './components/inventory/inventory.component';
 import { SupplierModal } from './components/supplier-modal/supplier-modal.component';
 import { SupplierComponent } from './components/supplier/supplier.component';
 import { HelpComponent } from './components/help/help.component';
-import { AboutComponent } from './components/about/about.component';
 
 //material
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -49,6 +50,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
     SupplierComponent,
     HelpComponent,
     AboutComponent,
+    WelcomeComponent,
   ],
   imports: [
     BrowserModule,
