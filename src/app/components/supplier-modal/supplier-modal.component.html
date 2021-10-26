@@ -5,7 +5,7 @@
                 <div class="card-body text-center">
 
                     <!-- Header ---section -->
-                    <span class="titulo"> {{ title | uppercase }}</span>
+                    <span class="title"> {{ title | uppercase }}</span>
                     <form class="mt-3" [formGroup]="supplierForm" (ngSubmit)="addSupplier()">
 
                         <!-- supplier-no ---section -->
@@ -51,7 +51,7 @@
 
                         <!-- Buttons ---section -->
                         <div class="mb-3">
-                            <button routerLink="/supplier-list" class="btn btn-secondary btn-lg float-start">Cancel</button>
+                            <button (click)="return()" type="reset"  class="btn btn-secondary btn-lg float-start">Cancel</button>
                             <button type="submit" [disabled]="supplierForm.invalid" class="btn btn-success btn-lg float-end">Accept</button>
                         </div>
                     </form>

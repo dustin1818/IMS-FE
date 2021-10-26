@@ -3,7 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Supplier } from 'src/app/models/supplier';
-import { SupplierService } from 'src/app/services/supplier.service';
+import { SupplierService } from 'src/app/services/supplier/supplier.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-supplier-modal',
@@ -20,7 +21,7 @@ export class SupplierModal implements OnInit {
 
   //constructor IMPORTS
   constructor(private fb: FormBuilder,
-              private router: Router,
+              private location: Location,
               private toastr: ToastrService,
               private _supplierService: SupplierService,
               private aRouter: ActivatedRoute) { 
@@ -36,10 +37,8 @@ export class SupplierModal implements OnInit {
       }
 
 
-  
-    ngOnInit(): void {
 
-      //editSupplier
+    ngOnInit(): void {
       this.editSupplier();
     }
 
@@ -58,7 +57,7 @@ export class SupplierModal implements OnInit {
     if(this.id !== null){
       this._supplierService.editSupplier(this.id, SUPPLIER).subscribe(data => {
         this.toastr.info('Supplier successfully edited !', 'Supplier Registered!');
-        this.router.navigate(['/supplier-list']);
+        this.location.back()
       })
     }else{
 
@@ -66,7 +65,7 @@ export class SupplierModal implements OnInit {
       console.log(SUPPLIER);
       this._supplierService.addSupplier(SUPPLIER).subscribe(data => {
         this.toastr.success('Supplier added succesfully!', 'Supplier Added!');
-        this.router.navigate(['/supplier-list']);
+        this.location.back()
       }, error => {
         console.log(error);
         this.supplierForm.reset();
@@ -89,6 +88,11 @@ export class SupplierModal implements OnInit {
         })
       })
     }
+  }
+
+  //cancel button
+  return(){
+    this.location.back()
   }
 
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { Supplier } from 'src/app/models/supplier';
-import { SupplierService } from 'src/app/services/supplier.service';
+import { SupplierService } from 'src/app/services/supplier/supplier.service';
 
 
 @Component({
