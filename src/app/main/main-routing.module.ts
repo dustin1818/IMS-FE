@@ -2,31 +2,30 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 //components
-import { WelcomeComponent } from '../components/welcome/welcome.component';
-import { SigninComponent } from '../components/signin/signin.component';
-import { SignupComponent } from '../components/signup/signup.component';
+import { WelcomeComponent } from '../components/register/welcome/welcome.component';
+import { SigninComponent } from '../components/register/signin/signin.component';
+import { SignupComponent } from '../components/register/signup/signup.component';
 import { NavbarComponent } from '../components/navbar/navbar.component';
 import { DashboardComponent } from '../components/dashboard/dashboard.component';
 import { EmployeeComponent } from '../components/employee/employee.component';
-import { InventoryComponent } from '../components/inventory/inventory.component';
-import { SupplierComponent } from '../components/supplier/supplier.component';
-import { SupplierModal } from '../components/supplier-modal/supplier-modal.component';
+import { InventoryComponent } from '../components/inventory-main/inventory/inventory.component';
+import { InventoryModalComponent } from '../components/inventory-main/add-inventory/inventory-modal.component';
+import { SupplierComponent } from '../components/supplier-main/supplier/supplier.component';
+import { SupplierModal } from '../components/supplier-main/modal-supplier/supplier-modal.component';
 import { ProfileComponent } from '../components/profile/profile.component';
 import { HelpComponent } from '../components/help/help.component';
+import { AboutComponent } from '../components/about/about.component';
 
 
 //guards
 import { AuthGuard } from '../guard/auth.guard';
 import { NotAuthGuard } from '../guard/notAuth.guard';
-import { AboutComponent } from '../components/about/about.component';
+import { EditInventoryComponent } from '../components/inventory-main/edit-inventory/edit-inventory.component';
 
 
-
-// lazy loading routes
 const routes: Routes = [
 
   {
-
     // first route to popin after running host
     path: '',
     redirectTo: 'welcome',
@@ -66,6 +65,8 @@ const routes: Routes = [
 
       //inventory
       { path: 'inventory', component: InventoryComponent, canActivateChild: [AuthGuard] },
+      { path: 'inventory/product-modal', component: InventoryModalComponent, canActivateChild: [AuthGuard] },
+      { path: 'inventory/product-modal/:id', component: EditInventoryComponent, canActivateChild: [AuthGuard] },
 
       //supplier
       { path: 'supplier-list', component: SupplierComponent, canActivateChild: [AuthGuard], },
