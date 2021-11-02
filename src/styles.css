@@ -47,4 +47,22 @@ html, body { height: 100%;
     z-index: 1000 !important;
   }
 
+  h1{
+    font-family: "Montserrat", sans-serif !important; 
+ }
+
+  .form-control:focus {
+    color: #373838 !important;
+    border-color: #0abab5 !important;
+    box-shadow: 0 0 0 0.25rem rgb(204 242 246 / 57%) !important;
+  }
+
+  .btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:disabled, 
+  .btn-primary:required, .btn-primary:enabled, .btn-primary:target{
+    color: #fff;
+    background: #0ABAB5 !important;
+    border-color: #0ABAB5 !important;
+    box-shadow: 0 0 0 0.25rem rgb(204 242 246 / 57%) !important;
+}
+
 
