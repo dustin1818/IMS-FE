@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {  FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
@@ -18,7 +19,8 @@ export class SignupComponent {
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
-    private router : Router
+    private router : Router,
+    private toastr: ToastrService
   ) {
     this.registerForm = this.formBuilder.group({
       email: ['', Validators.compose([
@@ -66,10 +68,15 @@ export class SignupComponent {
       if (!data['success']) {
        this.messageClass = 'alert alert-danger'; 
        this.message = data['message'];
+       
        this.submitting = false; // Re-enable submit button
      } else {
       this.message = data['message']; 
        this.messageClass = 'alert alert-success'; 
+       this.toastr.info('Proceeding to Login Page ', 'User successfully registered!', {
+        positionClass:'toast-bottom-right',
+        tapToDismiss:true
+      });
        setTimeout(() => {
          this.router.navigate(['/signin']); // Redirect to login view
        }, 2000);

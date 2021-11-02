@@ -3,7 +3,7 @@
     <div class="col-md-8 order-md-1 mx-auto my-12">
 
         <!-- Custom Success/Error Message -->
-        <div class=" show-hide-message">
+        <div class=" show-hide-message mt-5">
             <div [ngClass]="messageClass">
                 {{ message }}
             </div>
@@ -84,8 +84,8 @@
 
                 <div class="form-group-lg mb-3 col-md-4">
                     <h2 class="lb-lg"  for="contact">Contact</h2 >
-                    <input type="number" name="phoneNo" formControlName="phoneNo" class="form-control input-lg"
-                        placeholder ="+977.." style="height:40px" required>
+                    <input type="tel" name="phoneNo" formControlName="phoneNo" class="form-control input-lg"
+                        placeholder ="+977.." style="height:40px" required pattern="\d*" maxlength="11">
                     <ul class="help-block"  style="list-style: none;">
                         <li
                             *ngIf="registerForm.controls.phoneNo.errors?.required && registerForm.controls.phoneNo.dirty">
