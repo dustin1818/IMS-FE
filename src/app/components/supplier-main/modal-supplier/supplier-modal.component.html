@@ -1,0 +1,44 @@
+
+        <div class="container mt-5">
+              <div class="row p-4">
+                    <!-- Header ---section -->
+                    <h1 class="title text-center"> {{ title | uppercase }}</h1>
+
+                    <form class="mt-3 d-flex flex-column" [formGroup]="supplierForm" (ngSubmit)="addSupplier()" >
+
+                        <!-- supplier-no ---section -->
+                        <div class="mb-3">
+                            <label class="mb-4 mt-5">Supplier Number</label>
+                            <input type="tel" formControlName="supplier_no" class="form-control form-control-lg p-3"
+                                placeholder="supplier_no" maxlength="3">
+                        </div>
+
+                         <!-- NAME ---section -->
+                        <div class="mb-3">
+                            <label class="mb-4">Name</label>
+                            <input type="text" formControlName="name" class="form-control form-control-lg p-3"
+                                placeholder="name">
+     
+                        </div>
+
+                        <!-- Phone NO. ---section -->
+                        <div class="mb-3">
+                            <label class="mb-4">Phone Number</label>
+                            <input type="tel" formControlName="phone_no" class="form-control form-control-lg p-3"
+                                placeholder="phone_no" maxlength="11">
+                        </div>
+
+                        <!-- Location ---section -->
+                        <div class="mb-3">
+                            <label class="mb-4">Location</label>
+                            <input type="text" formControlName="location" class="form-control form-control-lg p-3"
+                                placeholder="location">
+                        </div>
+
+                        <!-- Buttons ---section -->
+                             <button style="font-size: 1.8rem;" type="submit" [disabled]="supplierForm.invalid" class="btn btn-primary mt-5">Accept</button>
+                            <button style="font-size: 1.8rem;" (click)="return()" type="reset"  class="btn btn-secondary btn-lg float-start mt-3">Cancel</button>
+
+                    </form>
+                </div>
+            </div>
