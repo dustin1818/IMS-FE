@@ -12,7 +12,7 @@
 
                 <div class="form-group col-md-6">
                     <label class="mb-4" for="product_type">Product Type</label>
-                    <select class="form-control p-4" name="product_type"  formControlName="product_type "  placeholder="ex. glass, cans, plastic">
+                    <select class="form-control p-4" name="product_type"  formControlName="product_type"  placeholder="ex. glass, cans, plastic">
                         <option *ngFor="let r of productOptions" [ngValue]="r">
                             {{r}}
                         </option>
