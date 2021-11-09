@@ -65,4 +65,28 @@ html, body { height: 100%;
     box-shadow: 0 0 0 0.25rem rgb(204 242 246 / 57%) !important;
 }
 
+.ngx-pagination .current {
+  background: #0ABAB5 !important;
+  }
+  /* 
+  .mat-form-field-appearance-fill .mat-form-field-flex {
+    background-color: #40ddc71f !important;
+  } */
+  
+  
+  .nav-link:focus{
+    color: #09aaaa;
+    background: white;
+    border: solid 2px white;
+    border-radius: 100px;
+    cursor: pointer;
+    transition: .3s all;
+  }
+  
+  .nav-link:hover{
+    color: #09aaaa;
+    background: white;
+    margin: 20px 0;
+    transition: .3s all;
+  }
 
