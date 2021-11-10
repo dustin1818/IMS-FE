@@ -4,6 +4,4 @@ export interface Product {
     product_type:string,
     quantity:number,
     price: number,
-    description: string,
-    manufacture_name:string
 }
