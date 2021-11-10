@@ -1,0 +1,12 @@
+
+h1{
+    font-family: "Montserrat", sans-serif !important; 
+ }
+ 
+ label{
+     font-size: 1.8rem;
+ }
+ 
+ input,select,textarea{
+     font-size: 1.4rem;
+ }

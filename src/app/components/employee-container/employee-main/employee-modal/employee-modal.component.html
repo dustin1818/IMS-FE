@@ -1,0 +1,47 @@
+
+        <div class="container mt-5">
+            <div class="row p-4">
+                  <!-- Header ---section -->
+                  <h1 class="title text-center"> {{ title | uppercase }}</h1>
+
+                  <form class="mt-3 d-flex flex-column" [formGroup]="employeeForm" (ngSubmit)="addEmployee()" >
+
+                      <!-- Employee-no ---section -->
+                      <div class="mb-3">
+                          <label class="mb-4 mt-5">Employee Number</label>
+                          <input type="tel" formControlName="employee_no" class="form-control form-control-lg p-3"
+                              placeholder="employee_no" maxlength="3">
+                      </div>
+
+                       <!-- NAME ---section -->
+                      <div class="mb-3">
+                          <label class="mb-4">Name</label>
+                          <input type="text" formControlName="name" class="form-control form-control-lg p-3"
+                              placeholder="name">
+   
+                      </div>
+
+                     <!-- POSITION ---section -->
+                      <div class="mb-3">
+                        <label class="mb-4">Role</label>
+                        <input type="text" formControlName="role" class="form-control form-control-lg p-3"
+                        placeholder="position">
+                    </div>
+
+                      <!-- DEPARTMENT ---section -->
+                      <div class="mb-3">
+                        <label class="mb-4">Department</label>
+                        <select class="form-control p-4"   formControlName="department"  placeholder="ex. office, warehouse, delivery">
+                          <option *ngFor="let r of departmentOptions" [ngValue]="r">
+                              {{r}}
+                          </option>
+                      </select>
+                    </div>
+
+                      <!-- Buttons ---section -->
+                           <button style="font-size: 1.8rem;" type="submit" [disabled]="employeeForm.invalid" class="btn btn-primary mt-5">Accept</button>
+                           <button style="font-size: 1.8rem;" (click)="return()" type="reset"  class="btn btn-secondary btn-lg float-start mt-3">Cancel</button>
+
+                  </form>
+              </div>
+          </div>

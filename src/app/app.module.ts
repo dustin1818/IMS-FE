@@ -15,13 +15,14 @@ import { SigninComponent } from './components/register/signin/signin.component';
 import { SignupComponent } from './components/register/signup/signup.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ProfileComponent } from './components/profile/profile.component';
-import { EmployeeComponent } from './components/employee/employee.component';
+import { EmployeeComponent } from './components/employee-container/employee/employee.component';
+import { EmployeeModalComponent } from './components/employee-container/employee-main/employee-modal/employee-modal.component';
 import { InventoryComponent } from './components/inventory-main/inventory/inventory.component';
 import { InventoryModalComponent } from './components/inventory-main/add-inventory/inventory-modal.component';
+import { EditInventoryComponent } from './components/inventory-main/edit-inventory/edit-inventory.component';
 import { SupplierModal } from './components/supplier-main/modal-supplier/supplier-modal.component';
 import { SupplierComponent } from './components/supplier-main/supplier/supplier.component';
 import { HelpComponent } from './components/help/help.component';
-import { EditInventoryComponent } from './components/inventory-main/edit-inventory/edit-inventory.component';
 
 //material
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -31,6 +32,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
+
+//other imports
 import { CommonModule } from '@angular/common';
 import { ToastrModule } from 'ngx-toastr';
 import { HttpClientModule } from '@angular/common/http';
@@ -56,6 +59,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
     WelcomeComponent,
     InventoryModalComponent,
     EditInventoryComponent,
+    EmployeeModalComponent,
   ],
   imports: [
     BrowserModule,

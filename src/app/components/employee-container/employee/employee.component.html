@@ -1,0 +1,49 @@
+<div class="container mt-5 w-100 h-100">
+    <div class="employee-head-container d-flex justify-content-between align-items-center">
+        <h2 class="employee-head-text">Employee Management</h2>
+        <button class="btn btn-employee" routerLink="employee-modal" routerLinkActive="active">+ Add Employee</button>
+    </div>
+
+    <hr>
+    <div class="main-container my-5 w-100 ">
+
+        
+        <div class="search-container d-flex w-100 rounded position-relative" style="background-color: rgb(246, 252, 253);">
+            <mat-form-field class="w-100" appearance="fill">
+              <mat-label>Search Employee</mat-label>
+              <input matInput type="text" [(ngModel)]="filterTerm">
+            </mat-form-field>
+            <button class="delete-btn position-absolute border-0" (click)="filterTerm = '' ">
+              <img class="img-fluid" src="../../../assets/images/clear.svg">
+            </button>
+          </div>
+
+
+
+        <div class="row w-100  d-flex flex-row justify-content-center align-items-center m-0">
+            <div class="card my-5 mx-3 p-3" *ngFor="let employee of employeeList | filter: filterTerm | paginate: {itemsPerPage: 3, currentPage: p};">
+                <span>{{ employee.employee_no }}</span>
+                <img style="width: 50%; margin: 0 auto;"class="img-fluid" src="../../../assets/images/Employee.png">
+                <div class="card-body d-flex flex-column justify-content-center align-items-center">
+                    <h1>{{ employee.name }}</h1>
+                    <p style="color: #1bc1c1; font-size: 1.8rem;">{{ employee.role }}</p>
+                    <span class="emp-department">{{ employee.department }}</span>
+                    <hr class="w-100">
+                <button style="font-size: 1.4rem;" data-toggle="tooltip" data-placement="right" title=" Edit Employee"  class="btn btn-primary w-100 p-2 my-2 rounded" [routerLink]= "['employee-modal' , employee._id]" >Edit</button>
+                <button style="font-size: 1.4rem;" data-toggle="tooltip" data-placement="right" title=" Delete Employee" class="btn btn-danger w-100 p-2 rounded" (click)="deleteEmployee(employee._id)" >Delete</button>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- end of main container -->
+    </div>
+
+    <div class="pagination-container mb-5 ">
+    <pagination-controls class="w-100 mb-5 d-flex justify-content-center align-items-center" (pageChange)="p = $event"></pagination-controls>
+    <h5 style="text-align: start; margin-top: 10px;" *ngIf="employeeList.length == 0">No Employee inside the
+      container</h5>
+    </div>
+
+
+</div>
