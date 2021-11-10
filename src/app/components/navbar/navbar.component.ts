@@ -53,9 +53,20 @@ export class NavbarComponent implements OnInit {
       });
   }
 
+
+  home(){
+    localStorage.clear();
+    this.toastr.info('Redirecting to Welcome Page ', 'User Logout successful!', {
+      positionClass:'toast-bottom-right',
+      tapToDismiss:true
+    });
+    this.router.navigate(['/welcome'])
+
+}
+
   logout(){
     localStorage.clear();
-    this.toastr.info('Redirecting to Login Page ', 'User Logout successful!', {
+    this.toastr.info('Redirecting to Logout Page ', 'User Logout successful!', {
       positionClass:'toast-bottom-right',
       tapToDismiss:true
     });
