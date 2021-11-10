@@ -45,12 +45,12 @@ export class EmployeeComponent implements OnInit {
 
 
   deleteEmployee(id: any) {
-    let confirmation = confirm("Are you sure you want to delete this supply?")
+    let confirmation = confirm("Are you sure you want to delete this Employee?")
     if(!confirmation){
       return
     }
     this._employeeService.deleteEmployee(id).subscribe(data => {
-      this.toastr.error('Supplier has been removed!', 'Supplier Deleted.', {
+      this.toastr.error('Employee has been removed!', 'Employee Deleted.', {
         positionClass:'toast-bottom-right',
         tapToDismiss:true
       });
