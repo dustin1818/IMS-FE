@@ -15,11 +15,11 @@
           <div class="search-container d-flex w-100 rounded position-relative">
             <mat-form-field class="w-100" appearance="fill">
               <mat-label>Search supplier</mat-label>
-              <input matInput type="text"  [(ngModel)]="filterTerm" >
+              <input matInput type="text" [(ngModel)]="filterTerm">
             </mat-form-field>
-            <button class="delete-btn position-absolute border-0" (click)="filterTerm = '' " >
-            <img class="img-fluid"  src="../../../assets/images/clear.svg">
-          </button>
+            <button class="delete-btn position-absolute border-0" (click)="filterTerm = '' ">
+              <img class="img-fluid" src="../../../assets/images/clear.svg">
+            </button>
           </div>
 
           <table *ngIf="supplierList.length > 0" class="table table-responsive mt-3 text-center">
@@ -34,7 +34,8 @@
             </thead>
 
             <tbody>
-              <tr *ngFor="let supplier of supplierList | filter:filterTerm | paginate: {itemsPerPage: 4, currentPage: p};">
+              <tr
+                *ngFor="let supplier of supplierList | filter:filterTerm | paginate: {itemsPerPage: 4, currentPage: p};">
                 <td class="pt-4">{{ supplier.supplier_no }}</td>
                 <td class="pt-4">{{ supplier.name }}</td>
                 <td class="pt-4">{{ supplier.phone_no }}</td>
@@ -42,16 +43,18 @@
 
                 <!-- ICONS -->
                 <td class="icons-container d-flex justify-content-end w-100 ">
-                  <a class="px-1 py-3 " data-toggle="tooltip" data-placement="right" title=" Edit Supplier" [routerLink]="['supplier-modal' , supplier._id]">
+                  <a class="px-1 py-3 " data-toggle="tooltip" data-placement="right" title=" Edit Supplier"
+                    [routerLink]="['supplier-modal' , supplier._id]">
                     <img class="icon img-fluid rounded " src="../../../assets/images/Edit-btn (1).svg"> </a>
-                  <a (click)="deleteSupplier(supplier._id)" class="px-1 py-3"  data-toggle="tooltip" data-placement="right" title=" Delete Supplier">
+                  <a (click)="deleteSupplier(supplier._id)" class="px-1 py-3" data-toggle="tooltip"
+                    data-placement="right" title=" Delete Supplier">
                     <img class="icon img-fluid rounded " src="../../../assets/images/delete-btn (1).svg"> </a>
                 </td>
               </tr>
             </tbody>
           </table>
 
-          <pagination-controls class="w-100" (pageChange) ="p = $event"></pagination-controls>
+          <pagination-controls class="w-100" (pageChange)="p = $event"></pagination-controls>
           <h5 style="text-align: start; margin-top: 10px;" *ngIf="supplierList.length == 0">No Supplier inside the
             container</h5>
         </div>

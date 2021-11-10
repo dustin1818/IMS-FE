@@ -7,9 +7,11 @@ import { SigninComponent } from '../components/register/signin/signin.component'
 import { SignupComponent } from '../components/register/signup/signup.component';
 import { NavbarComponent } from '../components/navbar/navbar.component';
 import { DashboardComponent } from '../components/dashboard/dashboard.component';
-import { EmployeeComponent } from '../components/employee/employee.component';
+import { EmployeeComponent } from '../components/employee-container/employee/employee.component';
+import { EmployeeModalComponent } from '../components/employee-container/employee-main/employee-modal/employee-modal.component';
 import { InventoryComponent } from '../components/inventory-main/inventory/inventory.component';
 import { InventoryModalComponent } from '../components/inventory-main/add-inventory/inventory-modal.component';
+import { EditInventoryComponent } from '../components/inventory-main/edit-inventory/edit-inventory.component';
 import { SupplierComponent } from '../components/supplier-main/supplier/supplier.component';
 import { SupplierModal } from '../components/supplier-main/modal-supplier/supplier-modal.component';
 import { ProfileComponent } from '../components/profile/profile.component';
@@ -20,7 +22,6 @@ import { AboutComponent } from '../components/about/about.component';
 //guards
 import { AuthGuard } from '../guard/auth.guard';
 import { NotAuthGuard } from '../guard/notAuth.guard';
-import { EditInventoryComponent } from '../components/inventory-main/edit-inventory/edit-inventory.component';
 
 
 const routes: Routes = [
@@ -62,6 +63,8 @@ const routes: Routes = [
 
       //employee
       { path: 'employee', component: EmployeeComponent, canActivateChild: [AuthGuard] },
+      { path: 'employee/employee-modal', component: EmployeeModalComponent, canActivateChild: [AuthGuard] },
+      { path: 'employee/employee-modal/:id', component: EmployeeModalComponent, canActivateChild: [AuthGuard] },
 
       //inventory
       { path: 'inventory', component: InventoryComponent, canActivateChild: [AuthGuard] },
