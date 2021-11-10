@@ -2,16 +2,16 @@
 <div class="row mt-5">
         <form [formGroup]="productform" class="needs-validation p-5 d-flex flex-column">
 
-          <h1 class="mb-5 text-center">Create Product</h1>
+          <h1 class="mb-5 text-center">Create Sample Product</h1>
             <div class="row mt-5">
-                <div class="form-group col-md-6">
-                    <label class="mb-4" for="product_name">Product Name</label>
+                <div class="form-group col-md-12">
+                    <label class="my-5 mb-4 " for="product_name">Product Name</label>
                     <input type="text" name="product_name" class="form-control p-4" formControlName="product_name" 
                         placeholder="product name...">
                 </div>
 
-                <div class="form-group col-md-6">
-                    <label class="mb-4" for="product_type">Product Type</label>
+                <div class="form-group col-md-12">
+                    <label class="my-5 mb-4" for="product_type">Product Type</label>
                     <select class="form-control p-4" name="product_type"  formControlName="product_type"  placeholder="ex. glass, cans, plastic">
                         <option *ngFor="let r of productOptions" [ngValue]="r">
                             {{r}}
@@ -19,32 +19,17 @@
                     </select>
                 </div>
 
-
-                <div class="form-group mb-3 col-md-12 mt-5">
-                    <label class="mb-4" >Description</label>
-                    <input type="text"  name="description" class="form-control p-4"  
-                    formControlName="description" placeholder="description...">
-
-                </div>
-
-                <div class="form-group mb-3 col-md-4  mt-3">
-                    <label class="mb-4"  >Quantity</label>
+                <div class="form-group mb-3 col-md-12  mt-3">
+                    <label class="my-5 mb-4"  >Quantity</label>
                     <input type="number" name="quantity" class="form-control p-4"  placeholder="quantity..."
                         required min="0" formControlName="quantity">
-
                 </div>
 
-                <div class="form-group mb-3 col-md-4  mt-3">
-                    <label class="mb-4"  for="address">Price</label>
+                <div class="form-group mb-3 col-md-12  mt-3">
+                    <label class="my-5 mb-4"  for="address">Price</label>
                     <input type="number" name="price" class="form-control p-4"  placeholder="price..."
                         required min="0" formControlName="price">
 
-                </div>
-
-                <div class="form-group col-md-4  mt-3" >
-                    <label class="mb-4"  for="inputPassword4">Manufacture Name</label>
-                    <input type="text" name="manufacture_name" class="form-control p-4" 
-                    formControlName="manufacture_name"  placeholder="manufacture name... ">
                 </div>
 
             </div>

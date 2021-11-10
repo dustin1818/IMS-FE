@@ -29,8 +29,6 @@ export class EditInventoryComponent implements OnInit {
       'product_type': new FormControl('', Validators.required),
       'quantity': new FormControl('', Validators.required),
       'price': new FormControl('', Validators.required),
-      'description': new FormControl('', Validators.required),
-      'manufacture_name': new FormControl('', Validators.required),
     })
 
    
@@ -45,8 +43,6 @@ export class EditInventoryComponent implements OnInit {
           'product_type': product.payload.product_type,
           'quantity': product.payload.quantity,
           'price': product.payload.price,
-          'description': product.payload.description,
-          'manufacture_name': product.payload.manufacture_name,
         })
       }
     )}

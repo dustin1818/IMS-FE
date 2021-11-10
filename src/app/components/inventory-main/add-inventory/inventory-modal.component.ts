@@ -27,10 +27,8 @@ export class InventoryModalComponent implements OnInit {
       this.productform = this.fb.group({
         product_name: ['', Validators.required],
         product_type: ['', Validators.required],
-        description: ['', Validators.required],
         quantity: ['', Validators.required],
         price: ['', Validators.required],
-        manufacture_name: ['', Validators.required],
       })
       console.log(this.productform)
     }
@@ -42,10 +40,8 @@ export class InventoryModalComponent implements OnInit {
     const PRODUCT:Product = {
       product_name: this.productform.get('product_name').value,
       product_type: this.productform.get('product_type').value,
-      description: this.productform.get('description').value,
       quantity: this.productform.get('quantity').value,
       price: this.productform.get('price').value,
-      manufacture_name: this.productform.get('manufacture_name').value,
       _id: ''
     }
 
