@@ -47,11 +47,12 @@ td {
 .card{
   max-width: 100% !important;
   height: 430px !important;
+  width: 588px;
   border-radius: 26px !important;
 }
 
 .main-container{
-  background: rgb(121, 247, 234) !important;
+  background: #47D7D2!important;
   box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.39);
   -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.39);
   -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.39);  

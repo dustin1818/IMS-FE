@@ -1,0 +1,91 @@
+<div class="container mt-5 w-100 h-100">
+  <div class="supplier-head-container d-flex justify-content-between align-items-center">
+    <h2 class="product-head-text">Inventory Management</h2>
+    <button class="btn btn-product" routerLink="product-modal" routerLinkActive="active">
+      + Add Product
+    </button>
+  </div>
+
+  <hr>
+
+  <div class="main-container d-flex flex-wrap">
+    <div class="row w-100 d-flex justify-content-around flex-wrap" style="margin: 0 !important;">
+
+      <!-- card container -->
+      <div class="card w-100 d-flex flex-column p-3 " *ngFor="let inventory of productList; let i = index " data-toggle="tooltip" data-placement="left" title="Click to edit the product">
+        <div class="card__inner">
+          <h2>{{ inventory.manufacture_name }}</h2>
+          <span class="my-5" style="font-size: 1.5rem !important;">Description:</span>
+          <p>
+            {{ inventory.description }}
+          </p>
+
+         </div>
+        
+        <span class="d-flex justify-content-between" data-toggle="tooltip" data-placement="top" title="Click to remove the product">
+          <span>{{ i + 1}} </span>
+          <a (click)="deleteProduct(inventory._id)" matTooltip=" Delete Supplier">
+            <img matTooltip=" Edit Product" class="icon img-fluid " src="../../../../assets//images/Close-card.svg"> </a>
+        </span>
+
+        <img [routerLink]="['product-modal',inventory._id]"  class="box-img" style="cursor: pointer;" src="../../../../assets//images/IMS -BOX.png">
+
+
+        <div class="row d-flex flex-column align-items-center  w-100" style="margin:0">
+          <div class="w-100 text-center">
+            <label style="font-size: 1.5rem !important;">
+              <span style="margin-right:10px">{{ inventory.product_name}} </span> |
+              <span style="margin-left:10px; color: #17B5AA; font-weight: 800;"> {{ inventory.product_type }} </span>
+            </label>
+          </div>
+
+          <div class="w-100 text-center mt-5">
+            <span class="price-box rounded">$ {{ inventory.price }}.00</span> 
+            <span class="price-box rounded" style="margin-left:10px; color: #ffffff; font-weight: 400;">  {{ inventory.quantity }} pcs </span>
+
+          </div>
+          <button class="btn btn-edit mt-5" matTooltip=" Edit Product"
+            [routerLink]="['product-modal',inventory._id]"> Edit Product </button>
+        </div>
+      </div>
+
+
+      
+    </div>
+
+  </div>
+</div>
+
+
+<!-- 
+
+
+
+        <div class="div ">
+          <label style="margin: 10px 20px;">Product Name: </label>
+          <span class="pt-4  ">{{ inventory.product_name}}</span>
+        </div>
+
+
+        <div class="div ">
+          <label style="margin: 10px 20px;">Product Type: </label>
+          <span class="pt-4 py-5"> {{ inventory.product_type }}</span>
+        </div>
+
+        <div class="div ">
+          <label style="margin: 10px 20px;">Quantity: </label>
+          <span class="pt-4 py-5"> {{ inventory.quantity }} pcs</span>
+        </div>
+
+
+      <!-- <div class="div ">
+          <label style="margin: 10px 20px;">Price:</label>
+         
+        </div> -->
+
+<!-- <div class="div ">
+          <label style="margin: 10px 20px;">Manufacture Name: </label>
+          <span class="pt-4 py-5"> {{ inventory.manufacture_name }}</span>
+        </div>
+
+        <p class="pt-4 py-5" style="text-align: justify;">{{ inventory.description }}</p> -->

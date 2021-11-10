@@ -1,0 +1,63 @@
+<div class="container my-4 p-5">
+    <h1 class="text-center">Update Product</h1>
+
+    <form class="d-flex flex-column" [formGroup]="productForm" (ngSubmit)="submit()">
+        <div class="form-group" class="mb-5 mt-3">
+            <label class="mb-3"  for="title">Product Name</label>
+            <input 
+                formControlName="product_name"
+                id="title" 
+                type="text" 
+                class="form-control p-3">
+        </div>
+        
+
+        <div class="form-group mb-3 ">
+                <label class="mb-3"  for="address">Product Type</label>
+                 <select class="form-control p-3" formControlName="product_type">
+                    <option *ngFor="let r of productOptions" [ngValue]="r">
+                            {{r}}
+                     </option>
+                    </select>
+         </div>
+
+        <div class="form-group" class="my-4">
+            <label class="mb-3"  for="title" >Quantity</label>
+            <input 
+                formControlName="quantity"
+                type="tel"
+                min="0"
+                class="form-control p-3">
+        </div>
+         
+        <div class="form-group" class="my-4">
+            <label class="mb-3"   for="body">Price</label>
+            <input 
+                formControlName="price"
+                type="tel" 
+                min = "0"
+                class="form-control p-3">
+        </div>
+         
+        <div class="form-group" class="my-4">
+            <label class="mb-3" for="body">Manufacture Name</label>
+            <input 
+            formControlName="manufacture_name"
+            type="text" 
+            class="form-control p-3">
+        </div>
+
+        
+        <div class="form-group" class="my-4 text-justify">
+            <label class="mb-3"  for="title">Description</label>
+                <textarea 
+                formControlName="description"
+                type="text" 
+                class="form-control p-3">
+            </textarea>
+        </div>
+        
+        <button style="font-size: 1.8rem;" class="btn btn-primary mb-1 my-4" type="submit">Update</button>
+    </form>
+    <button style="font-size: 1.8rem;" class="btn btn-secondary mb-3 mt-1 w-100 " (click)="return()">Cancel</button>
+</div>

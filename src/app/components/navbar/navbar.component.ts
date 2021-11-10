@@ -4,6 +4,7 @@ import { MatSidenav } from '@angular/material/sidenav';
 import { delay } from 'rxjs/operators';
 import { AuthenticationService } from 'src/app/services/user-authentication/authentication.service';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -20,7 +21,8 @@ export class NavbarComponent implements OnInit {
   sidenav!: MatSidenav;
   constructor(private observer: BreakpointObserver,
               private _userService: AuthenticationService,
-              private router:Router
+              private router:Router,
+              private toastr: ToastrService
     ) { }
 
 
@@ -53,7 +55,12 @@ export class NavbarComponent implements OnInit {
 
   logout(){
     localStorage.clear();
+    this.toastr.info('Redirecting to Login Page ', 'User Logout successful!', {
+      positionClass:'toast-bottom-right',
+      tapToDismiss:true
+    });
     this.router.navigate(['/signin'])
+
 }
 
 }

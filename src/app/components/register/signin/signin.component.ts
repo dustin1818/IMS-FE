@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { AuthService } from '../../services/auth/auth.service';
+import { AuthService } from '../../../services/auth/auth.service';
 import { Router } from '@angular/router';
 import { AuthGuard } from "src/app/guard/auth.guard";
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -22,7 +23,8 @@ export class SigninComponent implements OnInit {
     private formBuilder: FormBuilder,
     private authService: AuthService,
     private router: Router,
-    private authGuard: AuthGuard
+    private authGuard: AuthGuard,
+    private toastr: ToastrService
   ) {
     this.form = this.formBuilder.group({
       email: ['', Validators.required],
@@ -45,11 +47,17 @@ export class SigninComponent implements OnInit {
       } else {
         this.messageClass = 'alert alert-success'
         this.message = data['message']
+        this.toastr.info(' Redirecting to IMS Dashboard', 'Login Successful!', {
+          positionClass:'toast-bottom-right',
+          tapToDismiss:true
+        });
         this.authService.storeUserData(data['token'], data['user'])
         if (this.previousUrl) {
           this.router.navigate([this.previousUrl])
         } else {
+          setTimeout(() => {
           this.authService.redirectToHome()
+        }, 500);
         }
       }
     });

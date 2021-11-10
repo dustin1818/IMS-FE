@@ -1,7 +1,7 @@
 <div class="container mt-5 w-100 h-100">
   <div class="supplier-head-container d-flex justify-content-between align-items-center">
     <h2 class="supplier-head-text">Supplier Management</h2>
-    <div class="btn btn-supplier" routerLink="supplier-modal" routerLinkActive="active">+ Add Supplier</div>
+    <button class="btn btn-supplier" routerLink="supplier-modal" routerLinkActive="active">+ Add Supplier</button>
   </div>
 
   <hr>
@@ -9,7 +9,7 @@
     <div class="row w-100  d-flex flex-md-row-reverse justify-content-around align-items-center">
 
       <!-- card container -->
-      <div class="card mt-5 col-lg-6 mb-5 p-3">
+      <div class="card mt-5 col-lg-5  mb-5 p-3">
 
         <div class="card-body text-center p-2 rounded">
           <div class="search-container d-flex w-100 rounded position-relative">
@@ -34,7 +34,7 @@
             </thead>
 
             <tbody>
-              <tr *ngFor="let supplier of supplierList  | filter:filterTerm | paginate: {itemsPerPage: 4, currentPage: p};">
+              <tr *ngFor="let supplier of supplierList | filter:filterTerm | paginate: {itemsPerPage: 4, currentPage: p};">
                 <td class="pt-4">{{ supplier.supplier_no }}</td>
                 <td class="pt-4">{{ supplier.name }}</td>
                 <td class="pt-4">{{ supplier.phone_no }}</td>
@@ -42,9 +42,9 @@
 
                 <!-- ICONS -->
                 <td class="icons-container d-flex justify-content-end w-100 ">
-                  <a class="px-3 py-3 " matTooltip=" Edit Supplier" [routerLink]="['supplier-modal' , supplier._id]">
+                  <a class="px-1 py-3 " data-toggle="tooltip" data-placement="right" title=" Edit Supplier" [routerLink]="['supplier-modal' , supplier._id]">
                     <img class="icon img-fluid rounded " src="../../../assets/images/Edit-btn (1).svg"> </a>
-                  <a (click)="deleteSupplier(supplier._id)" class="px-3 py-3" matTooltip=" Delete Supplier">
+                  <a (click)="deleteSupplier(supplier._id)" class="px-1 py-3"  data-toggle="tooltip" data-placement="right" title=" Delete Supplier">
                     <img class="icon img-fluid rounded " src="../../../assets/images/delete-btn (1).svg"> </a>
                 </td>
               </tr>

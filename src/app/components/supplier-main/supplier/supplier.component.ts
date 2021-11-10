@@ -42,8 +42,15 @@ export class SupplierComponent implements OnInit {
 
 
   deleteSupplier(id: any) {
+    let confirmation = confirm("Are you sure you want to delete this supply?")
+    if(!confirmation){
+      return
+    }
     this._supplierService.deleteSupplier(id).subscribe(data => {
-      this.toastr.error('Supplier has been removed!', 'Supplier Deleted.');
+      this.toastr.error('Supplier has been removed!', 'Supplier Deleted.', {
+        positionClass:'toast-bottom-right',
+        tapToDismiss:true
+      });
       this.getSupplier();
     }, error => {
       console.log(error);

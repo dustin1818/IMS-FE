@@ -13,6 +13,7 @@ import { Location } from '@angular/common';
 })
 export class SupplierModal implements OnInit {
 
+
   //declaring variables
   supplierForm: FormGroup;
   title = 'Create Supplier';
@@ -45,7 +46,6 @@ export class SupplierModal implements OnInit {
 
   //add Supplier
   addSupplier() {
-    //Producto
     const SUPPLIER: Supplier = {
       supplier_no: this.supplierForm.get('supplier_no')?.value,
       name: this.supplierForm.get('name')?.value,
@@ -56,7 +56,10 @@ export class SupplierModal implements OnInit {
     //edit supplier
     if(this.id !== null){
       this._supplierService.editSupplier(this.id, SUPPLIER).subscribe(data => {
-        this.toastr.info('Supplier successfully edited !', 'Supplier Registered!');
+        this.toastr.info('Supplier successfully edited !', 'Supplier Registered!', {
+          positionClass:'toast-bottom-right',
+          tapToDismiss:true
+        });
         this.location.back()
       })
     }else{
@@ -64,7 +67,10 @@ export class SupplierModal implements OnInit {
       //add supplier
       console.log(SUPPLIER);
       this._supplierService.addSupplier(SUPPLIER).subscribe(data => {
-        this.toastr.success('Supplier added succesfully!', 'Supplier Added!');
+        this.toastr.success('Supplier added succesfully!', 'Supplier Added!', {
+          positionClass:'toast-bottom-right',
+          tapToDismiss:true
+        });
         this.location.back()
       }, error => {
         console.log(error);
