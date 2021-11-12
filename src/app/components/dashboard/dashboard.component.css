@@ -35,6 +35,8 @@ h1{
     display:flex;
     justify-content:space-between;
     min-height: 20%;
+    position: relative;
+    margin-left: 150px;
 }
 
 .row .card-body div:last-child span {
@@ -45,4 +47,9 @@ h1{
 
 .card-body div:first-child span{
     color: var(--text-grey);
+}
+
+img {
+    height: 8rem;
+    /*position: absolute;*/
 }
