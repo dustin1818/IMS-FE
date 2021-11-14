@@ -10,7 +10,8 @@ import { Order } from '../../models/orders';
 export class ProductService {
   orders: Order[];
 
-  url = 'http://localhost:3000/products';
+  // url = 'http://localhost:3000/products';
+  url = 'https://inventory-management-system-be.herokuapp.com/products';
   url2 = 'https://klylylydeee-cors.herokuapp.com/https://daps-node-server.herokuapp.com';
 
   constructor(private http: HttpClient) { }

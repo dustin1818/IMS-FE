@@ -8,7 +8,8 @@ import { User } from 'src/app/models/user';
 })
 export class AuthenticationService {
 
-  domain = "http://localhost:3000"
+  // domain = "http://localhost:3000"
+  domain = "https://inventory-management-system-be.herokuapp.com"
 
 
   constructor(private http: HttpClient,

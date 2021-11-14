@@ -9,7 +9,8 @@ import { Supplier }  from  '../../models/supplier'
 export class SupplierService {
   
   //api from Backend can be seen in IMS/BE - app.js
-  url = 'http://localhost:3000/api/suppliers/';
+  // url = 'http://localhost:3000/api/suppliers/';
+  url = 'https://inventory-management-system-be.herokuapp.com/api/suppliers';
 
   constructor(private http: HttpClient) { }
 
