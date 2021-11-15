@@ -16,7 +16,8 @@ export class AuthService {
     private http: HttpClient,
     private router: Router
   ) {
-    this.domain = "http://localhost:3000"
+    // this.domain = "http://localhost:3000"
+    this.domain = "https://inventory-management-system-be.herokuapp.com"
   }
 
   registerUser(user: object) {

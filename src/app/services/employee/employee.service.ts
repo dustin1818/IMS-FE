@@ -9,7 +9,8 @@ import { Employee } from 'src/app/models/employee';
 export class EmployeeService {
 
   //api from Backend can be seen in IMS/BE - app.js
-  url = 'http://localhost:3000/employees/';
+  // url = 'http://localhost:3000/employees/';
+  url = 'https://inventory-management-system-be.herokuapp.com/employees';
 
   constructor(private http: HttpClient) { }
 
