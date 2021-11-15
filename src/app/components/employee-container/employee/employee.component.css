@@ -1,12 +1,12 @@
 * {
     font-family: "Montserrat", sans-serif !important;
   }
-  
+
   .container {
     max-width: 1270px;
     z-index: -100 !important;
   }
-  
+
   .btn-employee {
     display: inline-block;
     text-align: center;
@@ -19,43 +19,43 @@
     width: 190px;
     box-shadow: 5px 5px 2px 0px rgba(82, 82, 82, 0.39);
   }
-  
+
   hr {
     color: rgb(22 213 178);
     padding: 2px;
     margin: 20px 0 30px 0;
   }
-  
+
   .employee-head-text {
     font-weight: 900;
     color: rgb(54, 54, 54);
     font-size: 3.7rem;
   }
-  
+
   th {
     font-size: 1.6rem;
     color: rgb(70, 69, 69);
     font-weight: 600;
     padding-bottom: 18px !important;
   }
-  
+
   td {
     font-size: 1.4rem;
     color: rgb(66, 66, 66);
   }
-  
+
   .card{
     max-width: 100% !important;
     height: 100%;
     width: 378px;
     border-radius: 26px !important;
   }
-  
+
   .main-container{
     background: #47D7D2!important;
     box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.39);
     -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.39);
-    -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.39);  
+    -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.39);
     border-radius: 7px;
     height: 100%;
   }
@@ -69,14 +69,13 @@
     color: #171717;
     transition:  all .3s ease-in-out;
   }
-  
+
   .emp-department:hover{
     background: #0F857D;
     color: white;
     transition:  all .3s ease-in-out;
   }
-  
-  
+
   .icon {
     height: 29px;
     cursor: pointer;
@@ -84,7 +83,7 @@
     -webkit-box-shadow: 2px 2px 2px 0px rgba(32, 32, 32, 0.75);
     -moz-box-shadow: 2px 2px 2px 0px rgba(32, 32, 32, 0.75);
   }
-  
+
   .delete-btn{
     bottom: 20px;
     width: 53px;
@@ -92,7 +91,53 @@
     cursor: pointer;
     background: transparent !important;
   }
-  
-  
-  
-  
+
+    /* mobile responsive 992px below */
+
+    @media only screen and (max-width: 992px) {
+      .employee-head-text{
+        font-size: 3.2rem;
+      }
+    }
+
+    @media only screen and (max-width: 480px) {
+      .employee-head-text{
+        font-size: 6.1vw;
+      }
+
+      .btn-employee{
+        font-size: 3.1vw !important;
+      }
+
+      .container{
+       max-width: 96%;
+      }
+
+      .main-container{
+        background: transparent !important;
+        box-shadow: none !important;
+      }
+
+      .card{
+        border-radius: 4px !important;
+      }
+    }
+
+
+
+  @media only screen and (max-width: 350px) {
+    .employee-head-container{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .employee-head-text{
+      text-align: center;
+    }
+
+    .btn-employee{
+      margin: 30px 0;
+    }
+  }

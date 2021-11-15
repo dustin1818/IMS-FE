@@ -52,7 +52,7 @@ span{
 mat-toolbar {
     background: #0ABAB5;
     color: white;
-    padding: 42px 0px !important;   
+    padding: 42px 0px !important;
 }
 
 mat-sidenav {
@@ -110,4 +110,42 @@ mat-divider {
     margin-top: 16px;
     margin-bottom: 16px;
     background-color: rgba(255, 255, 255, 0.5);
+}
+
+.btn-mobile{
+  visibility: collapse;
+}
+
+
+/*
+mobile responsive 576 below */
+
+@media only screen and  (max-width:577px)  {
+  .btn-outline-light{
+      height: 35px;
+  }
+
+  .btn-container{
+      display: flex;
+      align-items: center;
+  }
+
+}
+
+@media only screen and  (max-width:420px)  {
+
+  .btn-container{
+      display: none !important;
+  }
+  .button-mobile-box{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 25px;
+  }
+
+  .btn-mobile{
+      visibility: visible;
+  }
+
 }
