@@ -36,6 +36,7 @@ h1{
     justify-content:space-between;
     min-height: 20%;
     position: relative;
+    
     margin-left: 150px;
 }
 
@@ -50,6 +51,7 @@ h1{
 }
 
 img {
-    height: 8rem;
+    height: 5rem;
+    right: 80px;
     /*position: absolute;*/
 }
