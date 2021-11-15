@@ -40,6 +40,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import {NgxPaginationModule} from 'ngx-pagination';
+import { ErrorPageComponent } from './components/error-page/error-page.component';
 
 @NgModule({
   declarations: [
@@ -60,6 +61,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
     InventoryModalComponent,
     EditInventoryComponent,
     EmployeeModalComponent,
+    ErrorPageComponent,
   ],
   imports: [
     BrowserModule,

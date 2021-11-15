@@ -17,6 +17,7 @@ import { SupplierModal } from '../components/supplier-main/modal-supplier/suppli
 import { ProfileComponent } from '../components/profile/profile.component';
 import { HelpComponent } from '../components/help/help.component';
 import { AboutComponent } from '../components/about/about.component';
+import { ErrorPageComponent } from '../components/error-page/error-page.component';
 
 
 //guards
@@ -81,6 +82,13 @@ const routes: Routes = [
       //help and about
       { path: 'help', component: HelpComponent, canActivateChild: [AuthGuard] },
       { path: 'about', component: AboutComponent, canActivateChild: [AuthGuard] },
+
+      {
+        path: '**',
+        pathMatch: 'full',
+        component: ErrorPageComponent
+
+      },
     ]
   },
 ];
