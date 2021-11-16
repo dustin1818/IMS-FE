@@ -31,6 +31,6 @@ export class EmployeeService {
   }
 
   editEmployee(id: string, employee: Employee): Observable<any> {
-    return this.http.put(this.url + id, employee);
+    return this.http.put(`${this.url}/${id}`, employee);
   }
 }

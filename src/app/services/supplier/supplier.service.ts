@@ -10,7 +10,7 @@ export class SupplierService {
   
   //api from Backend can be seen in IMS/BE - app.js
   // url = 'http://localhost:3000/api/suppliers/';
-  url = 'https://inventory-management-system-be.herokuapp.com/api/suppliers/';
+  url = 'https://inventory-management-system-be.herokuapp.com/api/suppliers';
 
   constructor(private http: HttpClient) { }
 
@@ -27,10 +27,10 @@ export class SupplierService {
   }
 
   ugradeSupplier(id: string): Observable<any> {
-    return this.http.get(this.url + id);
+    return this.http.get(`${this.url}/${id}`);
   }
 
   editSupplier(id: string, supplier: Supplier): Observable<any> {
-    return this.http.put(this.url + id, supplier);
+    return this.http.put(`${this.url}/${id}`, supplier);
   }
 }
