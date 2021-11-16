@@ -27,7 +27,7 @@ export class EmployeeService {
   }
 
   ugradeEmployee(id: string): Observable<any> {
-    return this.http.get(this.url + id);
+    return this.http.get(`${this.url}/${id}`);
   }
 
   editEmployee(id: string, employee: Employee): Observable<any> {
