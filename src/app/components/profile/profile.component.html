@@ -1,30 +1,43 @@
-<div class="profile">
+<div class="profile d-flex flex-column p-5">
 
-    <h1 class="h3 text-dark pt-3 pl-3">User Details</h1>
-    <hr>
-  
-    <table class="table table-bordered container">
-      <tbody>
-        <tr>
-          <th scope="col">Username</th>
-          <td>{{userProfile['username'] }}</td>
-        </tr>
-        <tr>
-          <th scope="col">Position</th>
-          <td>{{userProfile['position'] }}</td>
-        </tr>
-        <tr>
-          <th scope="col">Email</th>
-          <td>{{userProfile['email']}}</td>
-        </tr>
-        <tr>
-          <th scope="col">Address</th>
-          <td>{{userProfile['location'] }}</td>
-        </tr>
-        <tr>
-          <th scope="col">Phone Number</th>
-          <td>{{userProfile['phoneNo'] }}</td>
-        </tr>
-      </tbody>
-    </table>
+  <h1 class="profile-head-text text-dark pt-3 pl-3">Profile</h1>
+  <hr class="line-head">
+
+
+  <div class="profile-details-container ">
+
+    <div class="card-container d-flex flex-row justify-content-around align-items-center">
+
+      <div class="img-container ">
+        <img class="img-fluid" src="../../../assets/images/IMS-Employee (1).png" style="max-height: 360px;">
+      </div>
+
+
+      <div class="user-profile-details p-5">
+        <div class="border-head">
+          <h1>User Details</h1>
+        </div>
+        <hr class="my-5">
+        <div class="row d-flex ">
+
+          <div class="details-row1 col-5  d-flex flex-column" style="margin-left: 10px;" >
+            <span class="mb-5">Username:</span>
+            <span class="mb-5">Position: </span>
+            <span class="mb-5">Email: </span>
+            <span class="mb-5">Location: </span>
+            <span class="mb-5">Phone Number: </span>
+          </div>
+
+
+          <div class="details-row2  col-5 d-flex flex-column">
+            <span class="mb-5">{{userProfile['username'] }}</span>
+            <span class="mb-5">{{userProfile['position'] }}</span>
+            <span class="mb-5">{{userProfile['email']}}</span>
+            <span class="mb-5">{{userProfile['location'] }}</span>
+            <span class="mb-5">{{userProfile['phoneNo'] }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
