@@ -3,7 +3,7 @@
 }
 
 .container {
-  max-width: 1270px;
+  max-width: 95% !important;
   z-index: -100 !important;
 }
 
@@ -71,6 +71,10 @@ td {
   -moz-box-shadow: 2px 2px 2px 0px rgba(32, 32, 32, 0.75);
 }
 
+.icons-container{
+  width: 100%;
+}
+
 .delete-btn{
   bottom: 20px;
   width: 53px;
@@ -79,5 +83,110 @@ td {
   background: transparent !important;
 }
 
+@media only screen and (max-width: 1289px) {
+.card{
+  width: 90% !important;
+}
 
+.illustration-container {
+ width: 70%;
+}
+
+}
+
+
+@media only screen and (max-width: 992px) {
+  .supplier-head-text{
+    font-size: 3.2rem;
+  }
+}
+
+@media only screen and (max-width: 560px) {
+  .main-container{
+    box-shadow: none !important;
+  }
+
+
+  .container{
+    min-width: 95%;
+    padding: 0;
+  }
+
+  .supplier-head-text{
+    font-size: 6.1vw;
+  }
+
+  .btn-supplier{
+    font-size: 3.1vw !important;
+  }
+
+
+  .search-container{
+    font-size: 1.1rem;
+  }
+
+  .illustration-container{
+    width: 87%;
+  }
+
+  .card{
+    width: 100%;
+    padding: 10px !important;
+    border-radius: 7px !important;
+   
+  }
+  
+   .row{
+    padding: 0 !important;
+    margin: 0!important;
+  }
+  
+  table{
+    margin-top: 30px !important;
+  }
+
+  th{
+    font-size: 2.6vw;
+  }
+
+  td{
+    font-size: 2.3vw;
+    padding-top: 11px !important;
+  }
+
+  .icon{
+    height: 16px;
+  }
+
+  .icons-container{
+    padding-top: 4px !important;
+  }
+
+}
+
+
+
+@media only screen and (max-width: 404px) {
+  .main-container{
+    background: none !important;
+   
+  }
+
+  .supplier-head-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .delete-btn{
+    bottom: 13px;
+  }
+
+  .card{
+      width: 96% !important;
+      height: 387px !important;
+  }
+
+}
 

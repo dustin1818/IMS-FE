@@ -3,18 +3,8 @@
 }
 
 .container {
-  max-width: 1270px;
+  max-width: 95%;
 }
-
-/* .main-container{
-  background: #47D7D2!important;
-  box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.39);
-  -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.39);
-  -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.39);  
-  border-radius: 7px;
-  height: 100%;
-} */
-
 .btn-product {
   display: inline-block;
   text-align: center;
@@ -43,7 +33,7 @@ hr {
 .card {
   width: 32% !important;
   max-height: 100%;
-  height: 565px;
+  height: 515px;
   margin: 20px 0;
   box-shadow: 5px 1px 24px 0px rgba(189, 253, 253, 0.75);
   -webkit-box-shadow: 5px 1px 24px 0px rgba(189, 253, 253, 0.75);
@@ -110,6 +100,18 @@ hr {
   font-size: 1.4rem;
 }
 
+.box-img{
+  transition: transform .5s ease;
+}
+
+.box-img:hover{
+   transition: transform .5s ease;
+   transform: scale(1.1);
+   z-index: 1 !important;
+}
+
+
+
 @media (max-width: 992px) {
   .product-head-text {
     font-size: 2.9rem !important;
@@ -118,7 +120,7 @@ hr {
   .card {
     width: 620px !important;
     max-width: 100% !important;
-    height: 800px;
+    height: 6%;
   }
 
   .btn-edit {
@@ -139,4 +141,14 @@ hr {
   .btn-product {
     font-size: 1.2rem !important;
   }
+}
+
+
+@media (max-width: 470px) {
+
+  .second-header-text{
+    display: flex;
+    flex-direction: column !important;
+  }
+
 }
