@@ -1,42 +1,101 @@
 .profile-head-text {
-    font-weight: 900;
-    color: rgb(54, 54, 54);
-    font-size: 3.7rem;
+  font-weight: 900;
+  color: rgb(54, 54, 54);
+  font-size: 3.7rem;
+}
+
+.line-head {
+  color: rgb(22 213 178);
+  padding: 2px;
+  margin: 20px 0 30px 0;
+}
+
+.card-container {
+  border: solid 2px #0abab5;
+  position: relative;
+  background: #0abab5;
+  border-radius: 32px;
+  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.39);
+  -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.39);
+  -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.39);
+}
+
+.user-profile-details {
+  border: solid 2px #42e8d9;
+  max-width: 100%;
+  color: hsl(0, 0%, 97%);
+  border-radius: 20px;
+}
+
+.profile-details-seperator {
+  padding: 2px;
+  color: #d8e4e2;
+}
+
+.details-row1,
+.details-row2 {
+  font-size: 1.8rem;
+}
+
+@media screen and (max-width: 576px) {
+
+  .profile{
+    padding: 20px !important;
   }
 
-
+  .card-container{
+    border: none;
+    box-shadow: 4px 13px 45px 0px rgba(10,186,181,0.75);
+-webkit-box-shadow: 4px 13px 45px 0px rgba(10,186,181,0.75);
+-moz-box-shadow: 4px 13px 45px 0px rgba(10,186,181,0.75);
+  }
   
-  .line-head {
-    color: rgb(22 213 178);
-    padding: 2px;
-    margin: 20px 0 30px 0;
+  .card-body-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 7px;
+  }
+
+  .img-container {
+    width: 65%;
+  }
+
+  .profile-head-text{
+    font-size: 6.1vw;
   }
 
   .border-head h1{
-    font-size: 2.5rem;
+    text-align: center;
   }
 
+  .user-profile-details {
+    width: 84%;
+    margin-top: 20px;
+  }
 
-.card-container{
-  border: solid 2px #42E8D9;
-  position: relative;
-  height: 460px;
-  background:  #0ABAB5;
+  .details-row1,.details-row2{
+    font-size: 2.9vw;
+  }
+
 }
 
+@media screen and (max-width: 470px) {
 
+  .img-container{
+    width: 85%;
+  }
 
-.user-profile-details{
-  border: solid 2px #42E8D9;
-  width: 750px;
-  max-width: 100%;
-  color: hsl(0, 0%, 97%);
-}
+  .profile{
+    padding: 12px !important;
+    padding-bottom: 40px !important;
+  }
 
-.details-row1{
-  font-size: 1.8rem;
-}
+  .user-profile-details {
+    width: 85%;
+  }
+  span{
+    margin-bottom: 10px !important;
+  }
 
-.details-row2{
-  font-size: 1.8rem;
 }
