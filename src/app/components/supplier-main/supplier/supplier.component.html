@@ -9,7 +9,7 @@
     <div class="row w-100  d-flex flex-md-row-reverse justify-content-around align-items-center">
 
       <!-- card container -->
-      <div class="card mt-5 col-lg-5  mb-5 p-3">
+      <div class="card mt-5 col-sm-6  mb-5 p-3">
 
         <div class="card-body text-center p-2 rounded">
           <div class="search-container d-flex w-100 rounded position-relative">
@@ -42,7 +42,7 @@
                 <td class="pt-4">{{ supplier.location}}</td>
 
                 <!-- ICONS -->
-                <td class="icons-container d-flex justify-content-end w-100 ">
+                <td class="icons-container d-flex justify-content-center w-100 ">
                   <a class="px-1 py-3 " data-toggle="tooltip" data-placement="right" title=" Edit Supplier"
                     [routerLink]="['supplier-modal' , supplier._id]">
                     <img class="icon img-fluid rounded " src="../../../assets/images/Edit-btn (1).svg"> </a>
@@ -54,14 +54,14 @@
             </tbody>
           </table>
 
-          <pagination-controls class="w-100" (pageChange)="p = $event"></pagination-controls>
+          <pagination-controls class="w-100 page" (pageChange)="p = $event"></pagination-controls>
           <h5 style="text-align: start; margin-top: 10px;" *ngIf="supplierList.length == 0">No Supplier inside the
             container</h5>
         </div>
       </div>
 
       <!-- Illustration - Container -->
-      <div class="illustration-container col-lg-6">
+      <div class="illustration-container col-sm-6">
         <img class="img-fluid" src="../../../assets/images/1.svg" alt="">
       </div>
     </div>
