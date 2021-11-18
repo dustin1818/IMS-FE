@@ -6,37 +6,47 @@
 
   <div class="profile-details-container ">
 
-    <div class="card-container d-flex flex-row justify-content-around align-items-center">
+    <div class="card-container pb-4 ">
 
-      <div class="img-container ">
-        <img class="img-fluid" src="../../../assets/images/IMS-Employee (1).png" style="max-height: 360px;">
-      </div>
+      <div class="row card-body-container d-flex flex-row   justify-content-center align-items-center mt-5">
 
-
-      <div class="user-profile-details p-5">
-        <div class="border-head">
-          <h1>User Details</h1>
+        <!-- image container -->
+        <div class="img-container d-sm-flex justify-content-sm-center col-sm-10 col-lg-5  mb-sm-5 ">
+          <img class="img-fluid" src="../../../assets/images/IMS-Employee (1).png" style="max-height: 400px;">
         </div>
-        <hr class="my-5">
-        <div class="row d-flex ">
 
-          <div class="details-row1 col-5  d-flex flex-column" style="margin-left: 10px;" >
-            <span class="mb-5">Username:</span>
-            <span class="mb-5">Position: </span>
-            <span class="mb-5">Email: </span>
-            <span class="mb-5">Location: </span>
-            <span class="mb-5">Phone Number: </span>
+
+        <!-- user-container -->
+        <div class="user-profile-details p-5 col-sm-10 col-lg-5  ">
+          <div class="border-head" style="font-size: 2.5rem;">
+            <h1>User Details</h1>
           </div>
 
+          
+          <hr class="my-5 profile-details-seperator">
 
-          <div class="details-row2  col-5 d-flex flex-column">
-            <span class="mb-5">{{userProfile['username'] }}</span>
-            <span class="mb-5">{{userProfile['position'] }}</span>
-            <span class="mb-5">{{userProfile['email']}}</span>
-            <span class="mb-5">{{userProfile['location'] }}</span>
-            <span class="mb-5">{{userProfile['phoneNo'] }}</span>
+          <!-- row for user details -->
+          <div class="row ">
+            <div class="details-row1 d-flex flex-column col-5" style="margin-left: 10px;">
+              <span class="mb-5">Username:</span>
+              <span class="mb-5">Position: </span>
+              <span class="mb-5">Email: </span>
+              <span class="mb-5">Location: </span>
+              <span class="mb-5">Phone Number: </span>
+            </div>
+
+
+            <div class="details-row2 d-flex flex-column col-5">
+              <span class="mb-5">{{userProfile['username'] }}</span>
+              <span class="mb-5">{{userProfile['position'] }}</span>
+              <span class="mb-5">{{userProfile['email']}}</span>
+              <span class="mb-5">{{userProfile['location'] }}</span>
+              <span class="mb-5">{{userProfile['phoneNo'] }}</span>
+            </div>
+
           </div>
         </div>
+
       </div>
     </div>
 
