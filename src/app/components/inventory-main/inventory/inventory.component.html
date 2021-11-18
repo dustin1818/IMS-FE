@@ -29,14 +29,14 @@
       <h1 style="text-align: center;" class="my-5" *ngIf="productList.length != 0">Sample Test Products</h1>
       <h2 style="text-align: center; color: grey;" class="my-5" *ngIf="productList.length == 0">There Are No Sample Products</h2>
       <div class="card w-100 d-flex flex-column p-3 "
-        *ngFor="  let inventory of productList | filter:filterTerm |  paginate: {itemsPerPage: 3, currentPage: p};  let i = index; "
+        *ngFor="  let inventory of productList | filter:filterTerm; let i = index; "
         data-toggle="tooltip" data-placement="left" title="Click to edit the product">
 
         <span class="d-flex justify-content-between" data-toggle="tooltip" data-placement="top"
           title="Click to remove the product">
           <span>{{ i + 1}} </span>
-          <a (click)="deleteProduct(inventory._id)" matTooltip=" Delete Supplier">
-            <img matTooltip=" Edit Product" class="icon img-fluid " src="../../../../assets//images/Close-card.svg">
+          <a (click)="deleteProduct(inventory._id)">
+            <img class="icon img-fluid " src="../../../../assets//images/Close-card.svg">
           </a>
         </span>
 
@@ -82,7 +82,7 @@
           <span>{{ i + 1}} </span>
 
 
-        <img  class="box-img"  style="cursor:default !important;"
+        <img  class="box-img  "  style="cursor:default !important;"
           src="../../../../assets//images/IMS -BOX.png">
 
 
@@ -107,8 +107,4 @@
   </div>
 
 
-  <!-- <pagination-controls class="w-100 my-5 d-flex justify-content-center align-items-center" (pageChange)="p = $event">
-  </pagination-controls>
-  <h5 style="text-align: start; margin-top: 10px;" *ngIf="productList.length == 0">No Products inside the
-    container</h5> -->
 </div>
