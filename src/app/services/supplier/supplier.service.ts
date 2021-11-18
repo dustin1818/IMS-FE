@@ -19,7 +19,7 @@ export class SupplierService {
   }
 
   deleteSupplier(id: string): Observable<any> {
-    return this.http.delete(this.url + id);
+    return this.http.delete(`${this.url}/${id}`);
   }
 
   addSupplier(supplier: Supplier): Observable<any> {
