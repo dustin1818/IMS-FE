@@ -118,7 +118,7 @@ hr {
   .card {
     width: 620px !important;
     max-width: 100% !important;
-    height: 800px;
+    height: 660px;
   }
 
   .btn-edit {
@@ -139,4 +139,17 @@ hr {
   .btn-product {
     font-size: 1.2rem !important;
   }
+}
+
+
+@media (max-width: 470px) {
+  .card{
+    height:7%
+  }
+
+  .second-header-text{
+    display: flex;
+    flex-direction: column !important;
+  }
+
 }
