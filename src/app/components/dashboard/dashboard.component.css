@@ -51,7 +51,7 @@ h1{
    
 }
 
-.row .card-body div:last-child span {
+.row .card-body div:first-child span {
     font-size: 1.8rem;
     color: #918f8f;
     padding-top: 1rem;
@@ -62,9 +62,9 @@ h1{
 }
 
 img {
-    height: 5rem;
+    height: 7rem;
     right: 80px;
-    /*position: absolute;*/
+
 }
 
 .box-quantity{
