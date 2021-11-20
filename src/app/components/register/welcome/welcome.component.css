@@ -202,7 +202,7 @@ path.two {
   }
 }
 
-@media screen and (max-width: 340px) {
+@media screen and (max-width: 420px) {
 
     nav > .container-fluid {
         padding: 0 3px !important;
@@ -217,13 +217,13 @@ path.two {
   }
 
   .logo-text{
-    font-size: 3.2rem;
+    font-size: 11.6vw !important;
   }
 
   .btn{
       height: 30px !important;
-      font-size: 1.2rem !important;
-  }
+      font-size: 3.2vw !important;
+    }
   .img-container{
       margin-top: 45px !important;
   }
@@ -247,6 +247,54 @@ path.two {
 
   svg{
       height: 25px !important;
+  }
+}
+
+
+@media screen and (max-width: 320px) {
+
+  main{
+    height: 90% !important;
+  }
+
+  .content-container{
+    display: grid !important;
+    place-items: center !important;
+  }
+
+  .text-container{
+    order: 2;
+    width: 87% !important;
+    padding: 35px 0 16px 0 !important;
+  }
+
+  .img-container{
+    width:100% !important;
+  }
+
+  .img-fluid{
+    width: 145% !important;
+    max-width:145% !important;
+
+  }
+
+  .header-text{
+    font-size: 7.2vw !important;
+    line-height: 34px !important;
+  }
+
+  .header-span{
+    font-size: 1.1rem !important;
+  }
+
+  
+  .cta{
+    font-size: 17px !important;
+}
+
+  .cta > span:nth-child(2){
+    top: 0 !important;
+    margin-left: 8px !important;
   }
 
 
