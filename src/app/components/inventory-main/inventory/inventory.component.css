@@ -117,10 +117,14 @@ hr {
     font-size: 2.9rem !important;
   }
 
+  .s-row{
+    padding-bottom: 40px !important;
+  }
+
   .card {
-    width: 620px !important;
+    width: 432px !important;
     max-width: 100% !important;
-    height: 6%;
+    height: auto !important;
   }
 
   .btn-edit {
@@ -146,9 +150,27 @@ hr {
 
 @media (max-width: 470px) {
 
+  .product-head-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
   .second-header-text{
     display: flex;
     flex-direction: column !important;
   }
+
+  .product-head-text {
+    font-size: 5.6vw !important;
+  }
+
+  .btn-product{
+    font-size: 2.6vw !important;
+  }
+
+
+
 
 }
