@@ -125,7 +125,7 @@
 
 
 
-  @media only screen and (max-width: 350px) {
+  @media only screen and (max-width: 404px) {
     .employee-head-container{
       display: flex;
       flex-direction: column;
