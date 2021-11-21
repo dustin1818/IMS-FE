@@ -37,24 +37,26 @@
   }
   
   @media screen and (max-width:576px) {
+    
+    .about-head-text{
+      font-size: 3rem !important;
+      margin-top: 68px !important;
+    }
   
     .about-head-description{
       line-height: 28px !important;
       text-align: left;
+      font-size: 1.5rem !important;
     }
   
     hr{
-      width: 165px !important;
-    }
-  
+      width: 115px !important;
+      margin-top: 30px !important;
+    }  
   
   }
   
   @media screen and (max-width:340px) {
-  
-    .about-head-text{
-      font-size: 2.7rem !important;
-    }
   
     .about-head-description{
       line-height: 28px !important;
@@ -63,7 +65,7 @@
     }
   
     hr{
-      width: 106px !important;
+      width: 100px !important;
     }
   
   

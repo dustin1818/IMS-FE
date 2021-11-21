@@ -68,12 +68,11 @@ html, body { height: 100%;
 .ngx-pagination .current {
   background: #0ABAB5 !important;
   }
-  /* 
-  .mat-form-field-appearance-fill .mat-form-field-flex {
-    background-color: #40ddc71f !important;
-  } */
-  
-  
+
+ .alert-danger, .alert-success{
+    text-align: center !important;
+  }  
+
   .nav-link:focus{
     color: #09aaaa;
     background: white;
