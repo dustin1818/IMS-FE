@@ -67,7 +67,7 @@ export class SignupComponent {
     this.authService.registerUser(user).subscribe((data: Object) => {
       if (!data['success']) {
        this.messageClass = 'alert alert-danger'; 
-       this.message = data['message'];
+       this.message = `Field or  ${data['message']}`;
        
        this.submitting = false; // Re-enable submit button
      } else {

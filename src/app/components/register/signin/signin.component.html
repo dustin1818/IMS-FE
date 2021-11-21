@@ -1,3 +1,20 @@
+<nav>
+    <div class="container-fluid d-flex align-items-center justify-content-between" style="padding: 7px 10px ;">
+
+        <div class="logo-container d-flex justify-content-center align-items-center">
+            <img src="../../../assets/images/IMS.svg" alt="" class="logo">
+            <h2 class="logo-text">IMS</h2>
+        </div>
+
+        <form class="d-flex btn-container">
+            <button class="btn btn-outline-light me-2" [routerLink]="['/welcome']"
+                routerLinkActive="signup">Home</button>
+            <button class="btn btn-outline-tiffany my-2 me-2 my-sm-0" [routerLink]="['/signup']"
+                routerLinkActive="signin">Register</button>
+        </form>
+    </div>
+</nav>
+
 <div class="container">
     <div class="row mt-5">
         <form class="form-signin mx-auto text-center mt-5" (submit)="onLoginSubmit()" [formGroup]="form">
@@ -6,21 +23,21 @@
                     {{ message }}
                 </div>
             </div>
-            <h1 class="h3 mb-3 font-weight-normal">Please Login</h1>
-            <input type="email" id="inputEmail" class="form-control p-4 mb-2 text-center" placeholder="Email address"
-                name="email" formControlName="email" required>
+            <h1 class="h3 mb-5 font-weight-normal" style="">Please Login</h1>
+            <input type="email" id="inputEmail" class="form-control p-4 mb-4 text-center" placeholder="Email address"
+                name="email" formControlName="email"  style="padding: 25px 10px !important;" required>
             <ul class="help-block">
                 <li *ngIf="form.controls.email.errors?.required && form.controls.email.dirty">Email is required.
                 </li>
             </ul>
-            <input type="password" id="inputPassword" class="form-control p-4 mb-2 text-center" placeholder="Password"
-                name="password" formControlName="password" required>
+            <input type="password" id="inputPassword" class="form-control p-4 mt-4 text-center" placeholder="Password"
+                name="password" formControlName="password" style="padding: 25px 10px !important;" required  >
             <ul class="help-block">
                 <li *ngIf="form.controls.password.errors?.required && form.controls.password.dirty">Password is
                     required.</li>
             </ul>
-            <hr class="md-3">
-            <input [disabled]="!form.valid || submitting" class="btn btn-lg btn-primary btn-block mt-3" type="submit"
+            <hr class="my-5">
+            <input [disabled]="!form.valid || submitting" class="btn btn-lg login btn-primary btn-block mt-3" type="submit"
                 value="Login">
         </form>
     </div>

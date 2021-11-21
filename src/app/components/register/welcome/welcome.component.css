@@ -251,7 +251,7 @@ path.two {
 }
 
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 360px) {
 
   main{
     height: 90% !important;

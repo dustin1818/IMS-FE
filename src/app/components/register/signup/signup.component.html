@@ -1,3 +1,21 @@
+<main>
+<nav>
+    <div class="container-fluid d-flex align-items-center justify-content-between" style="padding: 7px 10px ;">
+
+        <div class="logo-container d-flex justify-content-center align-items-center">
+            <img src="../../../assets/images/IMS.svg" alt="" class="logo">
+            <h2 class="logo-text">IMS</h2>
+        </div>
+
+        <form class="d-flex btn-container">
+            <button class="btn btn-outline-light me-2" [routerLink]="['/welcome']"
+                routerLinkActive="signup">Home</button>
+            <button class="btn btn-outline-tiffany my-2 me-2 my-sm-0" [routerLink]="['/signin']"
+                routerLinkActive="signin">Login</button>
+        </form>
+    </div>
+</nav>
+
 <div class="row mt-12">
 
     <div class="second-row col-md-8 order-md-1 mx-auto my-12">
@@ -9,7 +27,7 @@
             </div>
         </div>
 
-        <h1 class="my-3 mb-5 font-weight-normal">Please Register</h1>
+        <h1 style="margin: 50px 0 !important;" class="my-5 mb-5 font-weight-normal"> Please Register</h1>
 
         <form [formGroup]="registerForm" class="needs-validation w-100 form-inline " novalidate
             (submit)="onRegisterSubmit()">
@@ -17,25 +35,25 @@
             <div class="row">
                 <!-- username -->
                 <div class="form-group-lg col-sm-12 col-md-6">
-                    <h2  for="username">Username</h2 >
+                    <h2 for="username">Username</h2>
                     <input type="username" name="username" formControlName="username" class="form-control input-lg "
-                        placeholder="username"  style="height:40px">
+                        placeholder="JohnDoe" style="height:40px">
                     <ul class="help-block" style="list-style: none;">
                         <li
                             *ngIf="registerForm.controls.username.errors?.required && registerForm.controls.username.dirty">
-                            Username is required.
+                            Field Username is required.
                         </li>
                     </ul>
                 </div>
 
                 <div class="form-group-lg col-sm-12 col-md-6">
-                    <h2 class="lb-lg"  for="position">Position</h2 >
+                    <h2 class="lb-lg" for="position">Profession</h2>
                     <input type="position" name="position" formControlName="position" class="form-control input-lg "
-                        placeholder="position" style="height:40px">
-                    <ul class="help-block"  style="list-style: none;">
+                        placeholder="product tester" style="height:40px">
+                    <ul class="help-block" style="list-style: none;">
                         <li
                             *ngIf="registerForm.controls.position.errors?.required && registerForm.controls.position.dirty">
-                            Position is required.
+                            Profession is required.
                         </li>
                     </ul>
                 </div>
@@ -43,10 +61,10 @@
 
 
                 <div class="form-group-lg col-sm-12 mb-3 col-md-12">
-                    <h2 class="lb-lg"  for="email">Email</h2 >
+                    <h2 class="lb-lg" for="email">Email</h2>
                     <input type="email" name="email" formControlName="email" class="form-control input-lg"
-                        placeholder ="you@example.com" style="height:40px">
-                    <ul class="help-block"  style="list-style: none;">
+                        placeholder="you@example.com" style="height:40px; padding: 25px 10px;">
+                    <ul class="help-block" style="list-style: none;">
                         <li *ngIf="registerForm.controls.email.errors?.required && registerForm.controls.email.dirty">
                             Email is required.
                         </li>
@@ -55,10 +73,10 @@
 
 
                 <div class="form-group-lg col-sm-12 col-md-4">
-                    <h2  for="inputPassword4">Password</h2 >
-                    <input type="password" name="password" formControlName ="password" class="form-control input-lg "
+                    <h2 for="inputPassword4">Password</h2>
+                    <input type="password" name="password" formControlName="password" class="form-control input-lg "
                         placeholder="..... " style="height:40px">
-                    <ul class="help-block"  style="list-style: none;">
+                    <ul class="help-block" style="list-style: none;">
                         <li
                             *ngIf="registerForm.controls.password.errors?.required && registerForm.controls.password.dirty">
                             Password is
@@ -67,14 +85,14 @@
                 </div>
 
 
-     
+
 
 
                 <div class="form-group-lg mb-3 col-sm-12 col-md-4">
-                    <h2 class="lb-lg"  for="address">Address</h2 >
+                    <h2 class="lb-lg" for="address">Address</h2>
                     <input type="text" name="location" formControlName="location" class="form-control input-lg"
-                        placeholder ="1234 Main St" style="height:40px" required>
-                    <ul class="help-block"  style="list-style: none;">
+                        placeholder="1234 Main St" style="height:40px" required>
+                    <ul class="help-block" style="list-style: none;">
                         <li
                             *ngIf="registerForm.controls.location.errors?.required && registerForm.controls.location.dirty">
                             Address is
@@ -83,10 +101,10 @@
                 </div>
 
                 <div class="form-group-lg mb-3 col-sm-12 col-md-4">
-                    <h2 class="lb-lg"  for="contact">Contact</h2 >
+                    <h2 class="lb-lg" for="contact">Contact</h2>
                     <input type="tel" name="phoneNo" formControlName="phoneNo" class="form-control input-lg"
-                        placeholder ="+977.." style="height:40px" required pattern="\d*" maxlength="11">
-                    <ul class="help-block"  style="list-style: none;">
+                        placeholder="+977.." style="height:40px" required pattern="\d*" maxlength="11">
+                    <ul class="help-block" style="list-style: none;">
                         <li
                             *ngIf="registerForm.controls.phoneNo.errors?.required && registerForm.controls.phoneNo.dirty">
                             Contact is
@@ -95,10 +113,12 @@
                     </ul>
                 </div>
 
-                <hr class="my-12">
-                <input class="btn btn-primary btn-lg btn-block" type="submit" value="Register ">
+                <hr class="my-5">
+                <input class="btn btn-primary btn-register btn-lg btn-block" type="submit" value="Register ">
             </div>
         </form>
 
     </div>
 </div>
+
+</main>
