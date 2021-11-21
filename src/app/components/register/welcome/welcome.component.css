@@ -208,6 +208,10 @@ path.two {
         padding: 0 3px !important;
     }
 
+    nav{
+      padding-bottom: 47px !important;
+    }
+
     .logo-container{
         max-width: 150px;
     }
@@ -224,9 +228,6 @@ path.two {
       height: 30px !important;
       font-size: 3.2vw !important;
     }
-  .img-container{
-      margin-top: 45px !important;
-  }
 
   .text-container{
       padding: 35px 0 68px 0 !important;
@@ -252,11 +253,6 @@ path.two {
 
 
 @media screen and (max-width: 360px) {
-
-  main{
-    height: 95% !important; 
-  }
-
   .content-container{
     display: grid !important;
     place-items: center !important;
