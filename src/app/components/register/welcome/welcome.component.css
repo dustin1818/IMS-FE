@@ -254,7 +254,7 @@ path.two {
 @media screen and (max-width: 360px) {
 
   main{
-    height: 90% !important;
+    height: 95% !important; 
   }
 
   .content-container{
