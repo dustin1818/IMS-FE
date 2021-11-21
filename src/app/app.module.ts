@@ -13,7 +13,6 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { SigninComponent } from './components/register/signin/signin.component';
 import { SignupComponent } from './components/register/signup/signup.component';
-import { FooterComponent } from './components/footer/footer.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { EmployeeComponent } from './components/employee-container/employee/employee.component';
 import { EmployeeModalComponent } from './components/employee-container/employee-main/employee-modal/employee-modal.component';
@@ -49,7 +48,6 @@ import { ErrorPageComponent } from './components/error-page/error-page.component
     DashboardComponent,
     SigninComponent,
     SignupComponent,
-    FooterComponent,
     ProfileComponent,
     EmployeeComponent,
     InventoryComponent,

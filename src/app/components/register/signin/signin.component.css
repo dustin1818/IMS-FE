@@ -1,12 +1,75 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap");
+
 *{
     font-family: 'Montserrat', sans-serif !important;
 }
 
+
+nav{
+    background: #0ABAB5;
+    color: white;
+}
+
+.logo-container{
+    max-width: 168px;
+    width: 100%;
+    position: relative;
+    margin-left: 8px;
+    cursor: pointer;
+}
+
+.logo{
+    height: 92px;
+    margin-bottom: 10px;
+    position: absolute;
+    right: 85px;
+}
+
+li{
+    list-style-type: none;
+}
+
+.logo-text{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    margin-top: 9px;
+    z-index:1 ;
+    font-size: 4rem;
+}
+
 .btn{
+    font-size: 1.5rem !important;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.btn-outline-tiffany{
+    border:solid 2px #71eeea  !important ;
+    background-color: #71eeea    !important;
+    color: #363636;
+}
+
+.btn-outline-tiffany:hover{
+    border:solid 2px #098383  !important  ;
+    color: #f1f7f6 !important;
+    background-color: #098383    !important;
+}
+
+
+
+/* //login form */
+
+.row h1{
+    font-weight: 600;
+    color:rgb(85, 85, 85) ;
+    font-size: 3.4rem ;
+}
+
+
+.login {
     text-decoration: none;
     background-color: #0ABAB5 !important;
     color: #f8f8f8;
-    font-size: 1.8rem;
+    font-size: 1.8rem !important;
 }
 
 label{
@@ -14,6 +77,57 @@ label{
 }
 
 input{
-    font-size: 1.3rem;
+    font-size: 1.5rem;
 }
+
+
+
+@media screen and (max-width: 420px) {
+
+    nav > .container-fluid {
+        padding: 0 3px !important;
+    }
+
+    .logo-container{
+        max-width: 150px;
+    }
+    .logo {
+    height: 60px;
+    right: 85px;
+  }
+
+  .btn-container {
+    display: flex;
+    align-items: center;
+  }
+
+  .btn{
+    height: 30px !important;
+    font-size: 2.9vw !important;
+  }
+
+  .btn-register{
+    font-size: 1.7rem !important;
+    height: auto !important;
+  }
+
+  .logo-text{
+    font-size: 10.6vw !important;
+  }
+
+    .row h1{
+        font-size: 2.5rem !important;
+        text-align:center;
+ 
+    }
+
+
+    .login{
+        font-size: 1.8rem !important;
+        height: auto !important;
+    }
+
+
+}
+
 
