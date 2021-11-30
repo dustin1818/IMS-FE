@@ -1,87 +1,90 @@
 <mat-toolbar class="mat-elevation-z8  ">
-  <button mat-icon-button *ngIf="sidenav.mode === 'over'" (click)="sidenav.toggle()">
-      <mat-icon *ngIf="!sidenav.opened">
-          menu
-      </mat-icon>
-      <mat-icon *ngIf="sidenav.opened">
-          close
-      </mat-icon>
-  </button>
-  <div class="container-fluid d-flex align-items-center justify-content-between px-5">
+    <button mat-icon-button *ngIf="sidenav.mode === 'over'" (click)="sidenav.toggle()">
+        <mat-icon *ngIf="!sidenav.opened">
+            menu
+        </mat-icon>
+        <mat-icon *ngIf="sidenav.opened">
+            close
+        </mat-icon>
+    </button>
+    <div class="container-fluid d-flex align-items-center justify-content-between px-5">
+  
+        <div class="logo-container d-flex justify-content-center align-items-center" >
+            <img src="../../../assets/images/IMS.svg" alt="" class="logo">
+            <h2 class="logo-text">IMS</h2>
+        </div>
+  
+        <form class="d-flex btn-container">
+            <button class="btn btn-outline-light me-2" type="submit" (click)="home()">Home</button>
+            <button class="btn btn-outline-tiffany my-2 me-2 my-sm-0" (click)="logout()">Logout</button>
+        </form>
+    </div>
+  </mat-toolbar>
+  
+  
+  
+  <mat-sidenav-container>
+    <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8">
+  
+        <img class="avatar mat-elevation-z8 img-fluid" src="../../../assets/images/Employee.png"  style="cursor: pointer;" [routerLink]="['profile']" routerLinkActive="active"
+        data-toggle="tooltip" data-placement="left" title="Click to view the profile"
+        >
+  
+        <h4 class="name">{{userProfile['username'] }}</h4>
+        <p class="designation">{{userProfile['position'] }}</p>
+  
+        <mat-divider></mat-divider>
+  
+        <button mat-button class="menu-button nav-link active nav-link active" routerLink="dashboard" routerLinkActive="active">
+            <mat-icon>dashboard</mat-icon>
+            <span>Dashboard</span>
+        </button>
+        <button mat-button class="menu-button nav-link active" routerLink="employee" routerLinkActive="active">
+            <mat-icon>people</mat-icon>
+            <span>Employee</span>
+        </button>
+  
+        <button mat-button class="menu-button nav-link active" routerLink="supplier-list" routerLinkActive="active">
+            <mat-icon>assignment</mat-icon>
+            <span>Supplier</span>
+        </button>
+  
+        <button mat-button class="menu-button nav-link active" routerLink="inventory" routerLinkActive="active">
+            <mat-icon>store</mat-icon>
+            <span>Inventory</span>
+        </button>
+  
+        <button mat-button class="menu-button nav-link active" routerLink="profile" routerLinkActive="active">
+            <mat-icon>person</mat-icon>
+            <span>Profile</span>
+        </button>
+  
+  
+        <mat-divider></mat-divider>
+  
+        <button mat-button class="menu-button nav-link active" routerLink="help" routerLinkActive="active">
+            <mat-icon>help</mat-icon>
+            <span>Help</span>
+        </button>
 
-      <div class="logo-container d-flex justify-content-center align-items-center" >
-          <img src="../../../assets/images/IMS.svg" alt="" class="logo">
-          <h2 class="logo-text">IMS</h2>
-      </div>
-
-      <form class="d-flex btn-container">
-          <button class="btn btn-outline-light me-2" type="submit" (click)="home()">Home</button>
-          <button class="btn btn-outline-tiffany my-2 me-2 my-sm-0" (click)="logout()">Logout</button>
-      </form>
-  </div>
-</mat-toolbar>
-
-
-
-<mat-sidenav-container>
-  <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8">
-
-      <img class="avatar mat-elevation-z8 img-fluid" src="../../../assets/images/Employee.png" />
-
-      <h4 class="name">{{userProfile['username'] }}</h4>
-      <p class="designation">{{userProfile['position'] }}</p>
-
-      <mat-divider></mat-divider>
-
-      <button mat-button class="menu-button nav-link active nav-link active" routerLink="dashboard" routerLinkActive="active">
-          <mat-icon>dashboard</mat-icon>
-          <span>Dashboard</span>
-      </button>
-      <button mat-button class="menu-button nav-link active" routerLink="employee" routerLinkActive="active">
-          <mat-icon>people</mat-icon>
-          <span>Employee</span>
-      </button>
-
-      <button mat-button class="menu-button nav-link active" routerLink="supplier-list" routerLinkActive="active">
-          <mat-icon>assignment</mat-icon>
-          <span>Supplier</span>
-      </button>
-
-      <button mat-button class="menu-button nav-link active" routerLink="inventory" routerLinkActive="active">
-          <mat-icon>store</mat-icon>
-          <span>Inventory</span>
-      </button>
-
-      <button mat-button class="menu-button nav-link active" routerLink="profile" routerLinkActive="active">
-          <mat-icon>person</mat-icon>
-          <span>Profile</span>
-      </button>
-
-
-      <mat-divider></mat-divider>
-
-      <button mat-button class="menu-button nav-link active" routerLink="help" routerLinkActive="active">
-          <mat-icon>help</mat-icon>
-          <span>Help</span>
-      </button>
-
-      <button mat-button class="menu-button nav-link active" routerLink="about" routerLinkActive="active">
-          <mat-icon>info</mat-icon>
-          <span>About</span>
-      </button>
-
-      <div class="button-mobile-box">
-          <button class="btn btn-outline-light me-2 btn-mobile btn-home" type="submit" (click)="home()">Home</button>
-          <button class="btn btn-outline-tiffany my-2 me-2 my-sm-0 btn-mobile btn-logout"
-              (click)="logout()">Logout</button>
-      </div>
-
-  </mat-sidenav>
-
-  <div class="content w-100">
-
-      <router-outlet></router-outlet>
-
-  </div>
-
-</mat-sidenav-container>
+        <button mat-button class="menu-button nav-link active" routerLink="about" routerLinkActive="active">
+            <mat-icon>info</mat-icon>
+            <span>About</span>
+        </button>
+  
+        <div class="button-mobile-box">
+            <button class="btn btn-outline-light me-2 btn-mobile btn-home" type="submit" (click)="home()">Home</button>
+            <button class="btn btn-outline-tiffany my-2 me-2 my-sm-0 btn-mobile btn-logout"
+                (click)="logout()">Logout</button>
+        </div>
+  
+    </mat-sidenav>
+  
+    <div class="content w-100">
+  
+        <router-outlet></router-outlet>
+  
+    </div>
+  
+  </mat-sidenav-container>
+  
