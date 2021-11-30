@@ -4,6 +4,7 @@ import { SupplierService } from 'src/app/services/supplier/supplier.service';
 import { ProductService } from 'src/app/services/product/product.service';
 import { Product } from 'src/app/models/product';
 import { Order } from '../../../models/orders';
+import { ViewportScroller } from '@angular/common';
 
 @Component({
   selector: 'app-inventory',
@@ -22,6 +23,7 @@ export class InventoryComponent implements OnInit {
   message:any
 
   constructor(
+    private scroller: ViewportScroller,
     public _productService:ProductService,
     private _supplierService: SupplierService,
     private toastr: ToastrService) { }
@@ -75,6 +77,14 @@ export class InventoryComponent implements OnInit {
     this._productService.getOrders().subscribe(
       (res) =>{
       this._productService.orders = res as Order[];
+    });
+  }
+
+  goDown1() {
+    document.getElementById("main-container").scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+      inline: "nearest"
     });
   }
 
