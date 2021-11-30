@@ -42,20 +42,24 @@ html, body { height: 100%;
     background-color: #0ABAB5 !important;
     z-index: 1000 !important;
   }
-  .toast-warning {
-    background-color: #F89406 !important;
-    z-index: 1000 !important;
-  }
+
 
   h1{
     font-family: "Montserrat", sans-serif !important; 
  }
 
-  .form-control:focus {
+.form-control:focus {
     color: #373838 !important;
     border-color: #0abab5 !important;
     box-shadow: 0 0 0 0.25rem rgb(204 242 246 / 57%) !important;
   }
+
+ 
+textarea:focus{
+  outline:0 !important;
+  border:solid 1px #42E8D9 !important;
+}
+
 
   .btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:disabled, 
   .btn-primary:required, .btn-primary:enabled, .btn-primary:target{
