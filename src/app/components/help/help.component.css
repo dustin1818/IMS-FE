@@ -1,0 +1,99 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap");
+
+* {
+  font-family: "Montserrat", sans-serif !important;
+  margin: 0%;
+}
+
+
+.help-container{
+    background: rgb(255, 255, 255) !important;
+}
+
+.head-text{
+    font-weight: 900;
+    color: #2d2e2e;
+    font-size: 4.7rem;
+}
+
+.lb-lg{
+    text-align: left !important;
+    font-weight: 800;
+    color: rgb(104, 102, 102);
+}
+
+input,textarea{
+    font-size: 1.4rem;
+}
+
+.btn-contact{
+    background:#0ABAB5;
+    border: solid 2px #0ABAB5;
+    color: white;
+    padding: 10px 30px;
+    font-size: 1.5rem;
+    margin-bottom: 80px !important;
+}
+
+svg{
+    width: 40px !important;
+    fill: #0ABAB5;
+    margin: 0 20px ;
+}
+
+svg:hover{
+    transition: transform .5s ease;
+    transform: scale(1.4);
+}
+
+
+@media screen and (max-width: 992px ) {
+    .content-container{
+        margin-left: 18px !important;
+        width: 95%;
+    }
+}
+
+
+@media screen and (max-width: 576px ) {
+    .main-container{
+        display: flex;
+        flex-direction: column-reverse;
+        width: 100%;
+    }
+
+    .img-container{
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 400px ) {
+    .content-container{
+        margin-top: 25px;
+        width: 90%;
+    }
+    .head-text{
+        font-size: 2.7rem;
+        margin: 0 !important;
+    }
+
+    .lb-lg{
+        font-size: 1.3rem;
+    }
+
+    input,textarea{
+        font-size: 1rem;
+    }
+
+    .btn-contact{
+        font-size: 1.1rem;
+    }
+
+    svg{
+        width: 26px !important;
+    }
+
+
+}
+
+

@@ -6,10 +6,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./help.component.css']
 })
 export class HelpComponent implements OnInit {
+  name: string;
+  message: string;
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+  appendMailTo(){
+    this.name = this.name;
+    this.message = this.message;
   }
 
 }
