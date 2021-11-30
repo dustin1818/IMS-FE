@@ -1,15 +1,13 @@
-<div class="container mt-5 w-100 h-100">
-  <div class="product-head-container d-flex justify-content-between align-items-center">
-    <h2 class="product-head-text">Inventory Management</h2>
+<div id="main-container" class="container mt-5 w-100 h-100">
+  <div class="supplier-head-container d-flex justify-content-between align-items-center">
+    <h2 class="product-head-text animate__animated  animate__rollIn">Inventory Management</h2>
     <button class="btn btn-product" routerLink="product-modal" routerLinkActive="active">
       + Add Sample Product
     </button>
   </div>
-
   <hr>
-
-   <!-- search-container -->
-  <div class="search-container d-flex w-100  position-relative">
+  <!-- search-container -->
+  <div class="search-container d-flex w-100  position-relative" #target>
     <mat-form-field class="w-100" appearance="fill">
       <mat-label>Search Product</mat-label>
       <input matInput type="text" [(ngModel)]="filterTerm">
@@ -19,18 +17,15 @@
     </button>
   </div>
 
-
   <div class="main-container d-flex flex-wrap">
-
     <div class="row w-100 d-flex justify-content-around flex-wrap" style="margin: 0 !important;">
-
       <!-- card container -->
-
       <h1 style="text-align: center;" class="my-5" *ngIf="productList.length != 0">Sample Test Products</h1>
-      <h2 style="text-align: center; color: grey;" class="my-5" *ngIf="productList.length == 0">There Are No Sample Products</h2>
+      <h2 style="text-align: center; color: grey;" class="my-5" *ngIf="productList.length == 0">There Are No Sample
+        Products</h2>
       <div class="card w-100 d-flex flex-column p-3 "
-        *ngFor="  let inventory of productList | filter:filterTerm; let i = index; "
-        data-toggle="tooltip" data-placement="left" title="Click to edit the product">
+        *ngFor="  let inventory of productList | filter:filterTerm; let i = index; " data-toggle="tooltip"
+        data-placement="left" title="Click to edit the product">
 
         <span class="d-flex justify-content-between" data-toggle="tooltip" data-placement="top"
           title="Click to remove the product">
@@ -44,7 +39,7 @@
           src="../../../../assets//images/IMS -BOX.png">
 
 
-        <div class="row s-row d-flex flex-column align-items-center  w-100" style="margin:0">
+        <div class="row d-flex flex-column align-items-center  w-100" style="margin:0">
           <div class="w-100 text-center">
             <label style="font-size: 2.1rem !important;">
               <span style="margin-right:10px">{{ inventory.product_name}} </span> |
@@ -58,38 +53,25 @@
               inventory.quantity }} pc </span>
 
           </div>
-          <!-- <button class="btn btn-edit mt-5" matTooltip=" Edit Product" [routerLink]="['product-modal',inventory._id]">
-            Edit Product </button> -->
         </div>
       </div>
 
-
-
       <!-- ORDER -->
       <div class="second-header-text d-flex justify-content-center align-items-center my-5">
-      <h1  style="margin:20px">
-        Purchased Products from 
-      </h1>
-
-      <img style = "height: 100px;" class="img-fluid" src="../../../../assets/images/DapsLogo.svg">
-    </div>
-
+        <h1 style="margin:20px">
+          Purchased Products from
+        </h1>
+        <img style="height: 100px;" class="img-fluid" src="../../../../assets/images/DapsLogo.svg">
+      </div>
 
       <div class="card w-100 d-flex flex-column p-3" style="cursor:default !important;"
         *ngFor="  let inventory of  this._productService.orders | filter:filterTerm; let i = index">
-
-
-          <span>{{ i + 1}} </span>
-
-
-        <img  class="box-img  "  style="cursor:default !important;"
-          src="../../../../assets//images/IMS -BOX.png">
-
-
-        <div class=" row s-row d-flex flex-column align-items-center  w-100" style="margin:0">
+        <span>{{ i + 1}} </span>
+        <img class="box-img  " style="cursor:default !important;" src="../../../../assets//images/IMS -BOX.png">
+        <div class="row d-flex flex-column align-items-center  w-100" style="margin:0">
           <div class="w-100 text-center">
             <label style="font-size: 2.1rem !important;">
-              <span style="margin-right:10px" >{{ inventory.itemName}} </span> |
+              <span style="margin-right:10px">{{ inventory.itemName}} </span> |
               <span style="margin-left:10px; color: #17B5AA; font-weight: 800;"> {{ inventory.type }} </span>
             </label>
           </div>
@@ -99,12 +81,18 @@
             <span class="price-box rounded" style="margin-left:10px; color: #ffffff; font-weight: 400;"> {{
               inventory.quantity }} pc </span>
           </div>
-
         </div>
       </div>
-
     </div>
   </div>
-
-
-</div>
+  <button mat-button class="menu-button" (click)="goDown1()">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" aria-labelledby="title"
+    aria-describedby="desc" role="img" xmlns:xlink="http://www.w3.org/1999/xlink">
+      <title>Navigation Up</title>
+      <desc>A line styled icon from Orion Icon Library.</desc>
+      <path data-name="layer1"
+      d="M43 40a2.992 2.992 0 0 1-2.121-.879l-8.89-8.635-8.868 8.635a3 3 0 0 1-4.242-4.242L31.989 22l13.132 12.879A3 3 0 0 1 43 40z"
+       stroke="#42e8d9" stroke-miterlimit="10" stroke-width="2" stroke-linejoin="miter"
+      stroke-linecap="butt"></path>
+    </svg>
+  </button>

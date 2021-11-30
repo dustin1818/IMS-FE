@@ -1,28 +1,20 @@
 <div class="profile d-flex flex-column p-5">
 
-  <h1 class="profile-head-text text-dark pt-3 pl-3">Profile</h1>
+  <h1 class="profile-head-text text-dark pt-3 pl-3 animate__animated  animate__rollIn">Profile</h1>
   <hr class="line-head">
 
-
   <div class="profile-details-container ">
-
     <div class="card-container pb-4 ">
-
       <div class="row card-body-container d-flex flex-row   justify-content-center align-items-center mt-5">
-
         <!-- image container -->
         <div class="img-container d-sm-flex justify-content-sm-center col-sm-10 col-lg-5  mb-sm-5 ">
-          <img class="img-fluid" src="../../../assets/images/IMS-Employee (1).png" style="max-height: 400px;">
+          <img class="img-fluid animate__animated animate__bounceInLeft" src="../../../assets/images/IMS-Employee (1).png" style="max-height: 400px;">
         </div>
-
-
         <!-- user-container -->
         <div class="user-profile-details p-5 col-sm-10 col-lg-5  ">
           <div class="border-head" style="font-size: 2.5rem;">
-            <h1>User Details</h1>
+            <h1 >User Details</h1>
           </div>
-
-          
           <hr class="my-5 profile-details-seperator">
 
           <!-- row for user details -->
@@ -35,7 +27,6 @@
               <span class="mb-5">Phone Number: </span>
             </div>
 
-
             <div class="details-row2 d-flex flex-column col-5">
               <span class="mb-5">{{userProfile['username'] }}</span>
               <span class="mb-5">{{userProfile['position'] }}</span>
@@ -43,10 +34,8 @@
               <span class="mb-5">{{userProfile['location'] }}</span>
               <span class="mb-5">{{userProfile['phoneNo'] }}</span>
             </div>
-
           </div>
         </div>
-
       </div>
     </div>
 

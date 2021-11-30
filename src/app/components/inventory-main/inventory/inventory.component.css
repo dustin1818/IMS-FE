@@ -110,7 +110,17 @@ hr {
    z-index: 1 !important;
 }
 
+.menu-button{
+  position: absolute;
+  right: 0;
+  width: 90px;
+  fill: #fff;
+}
 
+.menu-button:hover{
+  fill: #42E8D9 !important;
+  transition: .2s all !important;
+}
 
 @media (max-width: 992px) {
   .product-head-text {
