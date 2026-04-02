@@ -4,15 +4,13 @@ import { Observable } from 'rxjs';
 import { Employee } from 'src/app/models/employee';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class EmployeeService {
-
   //api from Backend can be seen in IMS/BE - app.js
-  // url = 'http://localhost:3000/employees/';
-  url = 'https://inventory-management-system-be.herokuapp.com/employees';
+  url = 'https://ims-be-ktp4.onrender.com/employees';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   getEmployee(): Observable<any> {
     return this.http.get(this.url);

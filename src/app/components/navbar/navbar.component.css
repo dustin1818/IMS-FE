@@ -1,150 +1,141 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap");
 
-
-span{
-    font-size: 1.3rem;
-    font-family: 'Montserrat', sans-serif !important;
+span {
+  font-size: 1.3rem;
+  font-family: "Montserrat", sans-serif !important;
 }
 
-
-
-.logo-container{
-    max-width: 168px;
-    width: 100%;
-    position: relative;
-    margin-left: 8px;
-    cursor: pointer;
+.logo-container {
+  max-width: 168px;
+  width: 100%;
+  position: relative;
+  margin-left: 8px;
+  cursor: pointer;
 }
 
-.logo{
-    height: 92px;
-    margin-bottom: 10px;
-    position: absolute;
-    right: 95px;
+.logo {
+  height: 92px;
+  margin-bottom: 10px;
+  position: absolute;
+  right: 95px;
 }
 
-.logo-text{
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 900;
-    font-size: 3.4rem;
-    margin-top: 9px;
-    z-index:1 ;
-    font-size: 4.8rem;
+.logo-text {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 900;
+  font-size: 3.4rem;
+  margin-top: 9px;
+  z-index: 1;
+  font-size: 4.8rem;
 }
 
-.btn{
-    font-size: 1.5rem !important;
-    font-family: 'Montserrat', sans-serif;
+.btn {
+  font-size: 1.5rem !important;
+  font-family: "Montserrat", sans-serif;
 }
 
-.btn-outline-tiffany{
-    border:solid 2px #71eeea  !important ;
-    background-color: #71eeea    !important;
-    color: #363636;
+.btn-outline-tiffany {
+  border: solid 2px #71eeea !important ;
+  background-color: #71eeea !important;
+  color: #363636;
 }
 
-.btn-outline-tiffany:hover{
-    border:solid 2px #098383  !important  ;
-    color: #f1f7f6 !important;
-    background-color: #098383    !important;
+.btn-outline-tiffany:hover {
+  border: solid 2px #098383 !important  ;
+  color: #f1f7f6 !important;
+  background-color: #098383 !important;
 }
 
 mat-toolbar {
-    background: #0ABAB5;
-    color: white;
-    padding: 42px 0px !important;
+  background: #0abab5;
+  color: white;
+  padding: 42px 0px !important;
 }
 
 mat-sidenav {
-    margin: 0px;
-    width: 195px;
-    border-right: none;
-    background: #0ABAB5;
-    color: white;
-    border-radius: 0px;
-    padding: 16px;
-    text-align: center;
-
+  margin: 0px;
+  width: 195px;
+  border-right: none;
+  background: #0abab5;
+  color: white;
+  border-radius: 0px;
+  padding: 16px;
+  text-align: center;
 }
 
 mat-sidenav-container {
-    height: 630px !important;
-    max-height: 100%;
+  height: 100%;
+  max-height: 100%;
 }
 
 .menu-button {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    font-size: 1rem;
-
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: 1rem;
 }
 
 mat-icon {
-    margin-right: 8px;
+  margin-right: 8px;
 }
 
 .avatar {
-    margin-top: 16px;
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
+  margin-top: 16px;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
 }
 
 .name {
-    margin-top: 8px;
-    font-weight: normal;
-    font-size: 1.6rem;
+  margin-top: 8px;
+  font-weight: normal;
+  font-size: 1.6rem;
 }
 
 .designation {
-    margin-top: 2px;
-    font-size: 0.7rem;
-    color: lightgrey;
-    font-size: 1.3rem;
+  margin-top: 2px;
+  font-size: 0.7rem;
+  color: lightgrey;
+  font-size: 1.3rem;
 }
 
 mat-divider {
-    margin-top: 16px;
-    margin-bottom: 16px;
-    background-color: rgba(255, 255, 255, 0.5);
+  margin-top: 16px;
+  margin-bottom: 16px;
+  background-color: rgba(255, 255, 255, 0.5);
 }
 
-.btn-mobile{
+.btn-mobile {
   visibility: collapse;
 }
-
 
 /*
 mobile responsive 576 below */
 
-@media only screen and  (max-width:577px)  {
-  .btn-outline-light{
-      height: 35px;
+@media only screen and (max-width: 577px) {
+  .btn-outline-light {
+    height: 35px;
   }
 
-  .btn-container{
-      display: flex;
-      align-items: center;
+  .btn-container {
+    display: flex;
+    align-items: center;
   }
-
 }
 
-@media only screen and  (max-width:420px)  {
-
-  .btn-container{
-      display: none !important;
+@media only screen and (max-width: 420px) {
+  .btn-container {
+    display: none !important;
   }
-  .button-mobile-box{
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-top: 25px;
-  }
-
-  .btn-mobile{
-      visibility: visible;
+  .button-mobile-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 25px;
   }
 
+  .btn-mobile {
+    visibility: visible;
+  }
 }
