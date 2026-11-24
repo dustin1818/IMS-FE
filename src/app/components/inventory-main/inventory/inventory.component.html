@@ -1,98 +1,41 @@
-<div id="main-container" class="container mt-5 w-100 h-100">
-  <div class="supplier-head-container d-flex justify-content-between align-items-center">
-    <h2 class="product-head-text animate__animated  animate__rollIn">Inventory Management</h2>
-    <button class="btn btn-product" routerLink="product-modal" routerLinkActive="active">
-      + Add Sample Product
-    </button>
-  </div>
-  <hr>
-  <!-- search-container -->
-  <div class="search-container d-flex w-100  position-relative" #target>
-    <mat-form-field class="w-100" appearance="fill">
-      <mat-label>Search Product</mat-label>
-      <input matInput type="text" [(ngModel)]="filterTerm">
-    </mat-form-field>
-    <button class="delete-btn position-absolute border-0" (click)="filterTerm = '' ">
-      <img class="img-fluid" src="../../../assets/images/clear.svg">
-    </button>
-  </div>
-
-  <div class="main-container d-flex flex-wrap">
-    <div class="row w-100 d-flex justify-content-around flex-wrap" style="margin: 0 !important;">
-      <!-- card container -->
-      <h1 style="text-align: center;" class="my-5" *ngIf="productList.length != 0">Sample Test Products</h1>
-      <h2 style="text-align: center; color: grey;" class="my-5" *ngIf="productList.length == 0">There Are No Sample
-        Products</h2>
-      <div class="card w-100 d-flex flex-column p-3 "
-        *ngFor="  let inventory of productList | filter:filterTerm; let i = index; " data-toggle="tooltip"
-        data-placement="left" title="Click to edit the product">
-
-        <span class="d-flex justify-content-between" data-toggle="tooltip" data-placement="top"
-          title="Click to remove the product">
-          <span>{{ i + 1}} </span>
-          <a (click)="deleteProduct(inventory._id)">
-            <img class="icon img-fluid " src="../../../../assets//images/Close-card.svg">
-          </a>
-        </span>
-
-        <img [routerLink]="['product-modal',inventory._id]" class="box-img" style="cursor: pointer;"
-          src="../../../../assets//images/IMS -BOX.png">
-
-
-        <div class="row d-flex flex-column align-items-center  w-100" style="margin:0">
-          <div class="w-100 text-center">
-            <label style="font-size: 2.1rem !important;">
-              <span style="margin-right:10px">{{ inventory.product_name}} </span> |
-              <span style="margin-left:10px; color: #17B5AA; font-weight: 800;"> {{ inventory.product_type }} </span>
-            </label>
-          </div>
-
-          <div class="w-100 text-center mt-5" style="font-size: 1.8rem;">
-            <span class="price-box rounded">$ {{ inventory.price }}.00</span>
-            <span class="price-box rounded" style="margin-left:10px; color: #ffffff; font-weight: 400;"> {{
-              inventory.quantity }} pc </span>
-
-          </div>
-        </div>
+<main id="main-container" class="page">
+  <header class="page-heading">
+    <h1>Inventory</h1>
+    <a class="action" routerLink="product-modal"><mat-icon>add</mat-icon>Add sample product</a>
+  </header>
+  <div class="search-box">
+        <mat-icon>search</mat-icon>
+        <input type="text" aria-label="Search products" placeholder="Search products" [(ngModel)]="filterTerm">
+        <button *ngIf="filterTerm" class="icon-action" type="button" aria-label="Clear search" (click)="filterTerm = ''"><mat-icon>close</mat-icon></button>
       </div>
-
-      <!-- ORDER -->
-      <div class="second-header-text d-flex justify-content-center align-items-center my-5">
-        <h1 style="margin:20px">
-          Purchased Products from
-        </h1>
-        <img style="height: 100px;" class="img-fluid" src="../../../../assets/images/DapsLogo.svg">
-      </div>
-
-      <div class="card w-100 d-flex flex-column p-3" style="cursor:default !important;"
-        *ngFor="  let inventory of  this._productService.orders | filter:filterTerm; let i = index">
-        <span>{{ i + 1}} </span>
-        <img class="box-img  " style="cursor:default !important;" src="../../../../assets//images/IMS -BOX.png">
-        <div class="row d-flex flex-column align-items-center  w-100" style="margin:0">
-          <div class="w-100 text-center">
-            <label style="font-size: 2.1rem !important;">
-              <span style="margin-right:10px">{{ inventory.itemName}} </span> |
-              <span style="margin-left:10px; color: #17B5AA; font-weight: 800;"> {{ inventory.type }} </span>
-            </label>
-          </div>
-
-          <div class="w-100 text-center mt-5" style="font-size: 1.8rem;">
-            <span class="price-box rounded">$ {{ inventory.price }}.00</span>
-            <span class="price-box rounded" style="margin-left:10px; color: #ffffff; font-weight: 400;"> {{
-              inventory.quantity }} pc </span>
-          </div>
-        </div>
-      </div>
+  <p *ngIf="message" class="alert alert-danger" role="alert">{{ message }}</p>
+  <section *ngIf="productList | filter:filterTerm as samples">
+    <header class="section-heading"><h2>Sample products <span class="count" *ngIf="sampleState === 'ready'">{{ samples.length }}</span></h2></header>
+    <div class="stock-grid">
+      <ng-container *ngFor="let item of samples">
+        <ng-container *ngTemplateOutlet="stockCard; context: {name: item.product_name, type: item.product_type, price: item.price, quantity: item.quantity, id: item._id}"></ng-container>
+      </ng-container>
     </div>
-  </div>
-  <button mat-button class="menu-button" (click)="goDown1()">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" aria-labelledby="title"
-    aria-describedby="desc" role="img" xmlns:xlink="http://www.w3.org/1999/xlink">
-      <title>Navigation Up</title>
-      <desc>A line styled icon from Orion Icon Library.</desc>
-      <path data-name="layer1"
-      d="M43 40a2.992 2.992 0 0 1-2.121-.879l-8.89-8.635-8.868 8.635a3 3 0 0 1-4.242-4.242L31.989 22l13.132 12.879A3 3 0 0 1 43 40z"
-       stroke="#42e8d9" stroke-miterlimit="10" stroke-width="2" stroke-linejoin="miter"
-      stroke-linecap="butt"></path>
-    </svg>
-  </button>
+    <p *ngIf="!samples.length" class="surface empty" role="status">{{ sampleState === 'loading' ? 'Loading sample products…' : sampleState === 'error' ? 'Sample inventory is unavailable.' : filterTerm ? 'No sample products match your search.' : 'No sample products yet.' }}</p>
+  </section>
+  <section *ngIf="orderList | filter:filterTerm as orders">
+    <header class="section-heading"><h2>Purchased products <span class="count" *ngIf="orderState === 'ready'">{{ orders.length }}</span></h2><img class="partner-logo" src="assets/images/DapsLogo.svg" alt="Purchased from DAPS"></header>
+    <div class="stock-grid">
+      <ng-container *ngFor="let order of orders">
+        <ng-container *ngTemplateOutlet="stockCard; context: {name: order.itemName, type: order.type, price: order.price, quantity: order.quantity}"></ng-container>
+      </ng-container>
+    </div>
+    <p *ngIf="!orders.length" class="surface empty" role="status">{{ orderState === 'loading' ? 'Loading purchased products…' : orderState === 'error' ? 'Purchased inventory is unavailable.' : filterTerm ? 'No purchased products match your search.' : 'No purchased products yet.' }}</p>
+  </section>
+  <button class="text-action back-top" type="button" (click)="goDown1()"><mat-icon>arrow_upward</mat-icon>Back to top</button>
+</main>
+
+<ng-template #stockCard let-name="name" let-type="type" let-price="price" let-quantity="quantity" let-id="id">
+  <article class="surface stock-card">
+    <div class="stock-top"><img src="assets/images/IMS -BOX.png" alt=""><span class="tag">{{ type }}</span></div>
+    <h3><a *ngIf="id; else purchasedName" [routerLink]="['product-modal', id]">{{ name }}</a><ng-template #purchasedName>{{ name }}</ng-template></h3>
+    <dl><div><dt>Quantity</dt><dd>{{ quantity | number }} pcs</dd></div><div><dt>Price</dt><dd>{{ price | currency }}</dd></div></dl>
+    <footer *ngIf="id"><a class="text-action" [routerLink]="['product-modal', id]" [attr.aria-label]="'Edit ' + name"><mat-icon>edit</mat-icon>Edit</a>
+      <button class="icon-action danger" type="button" title="Delete sample product" [attr.aria-label]="'Delete ' + name" (click)="deleteProduct(id)"><mat-icon>delete</mat-icon></button></footer>
+  </article>
+</ng-template>

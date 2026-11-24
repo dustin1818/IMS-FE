@@ -8,7 +8,7 @@ import {  ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-edit-inventory',
   templateUrl: './edit-inventory.component.html',
-  styleUrls: ['./edit-inventory.component.css']
+  styleUrls: ['../../record-form.css']
 })
 export class EditInventoryComponent implements OnInit {
 

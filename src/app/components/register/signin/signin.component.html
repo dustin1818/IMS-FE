@@ -1,44 +1,25 @@
-<nav>
-    <div class="container-fluid d-flex align-items-center justify-content-between" style="padding: 7px 10px ;">
-
-        <div class="logo-container d-flex justify-content-center align-items-center">
-            <img src="../../../assets/images/IMS.svg" alt="" class="logo">
-            <h2 class="logo-text">IMS</h2>
-        </div>
-
-        <form class="d-flex btn-container">
-            <button class="btn btn-outline-light me-2" [routerLink]="['/welcome']"
-                routerLinkActive="signup">Home</button>
-            <button class="btn btn-outline-tiffany my-2 me-2 my-sm-0" [routerLink]="['/signup']"
-                routerLinkActive="signin">Register</button>
-        </form>
-    </div>
-</nav>
-
-<div class="container">
-    <div class="row mt-5">
-        <form class="form-signin mx-auto text-center mt-5" (submit)="onLoginSubmit()" [formGroup]="form">
-            <div class="md-3 show-hide-message">
-                <div [ngClass]="messageClass">
-                    {{ message }}
-                </div>
-            </div>
-            <h1 class="h3 mb-5 font-weight-normal" style="">Please Login</h1>
-            <input type="email" id="inputEmail" class="form-control p-4 mb-4 text-center" placeholder="Email address"
-                name="email" formControlName="email"  style="padding: 25px 10px !important;" required>
-            <ul class="help-block">
-                <li *ngIf="form.controls.email.errors?.required && form.controls.email.dirty">Email is required.
-                </li>
-            </ul>
-            <input type="password" id="inputPassword" class="form-control p-4 mt-4 text-center" placeholder="Password"
-                name="password" formControlName="password" style="padding: 25px 10px !important;" required  >
-            <ul class="help-block">
-                <li *ngIf="form.controls.password.errors?.required && form.controls.password.dirty">Password is
-                    required.</li>
-            </ul>
-            <hr class="my-5">
-            <input [disabled]="!form.valid || submitting" class="btn btn-lg login btn-primary btn-block mt-3" type="submit"
-                value="Login">
-        </form>
-    </div>
-</div>
+<app-public-header page="signin"></app-public-header>
+<main class="auth-layout">
+  <aside class="auth-visual">
+    <h2>Inventory Management System</h2>
+    <img src="assets/images/welcomepage.svg" alt="">
+  </aside>
+  <section class="auth-panel">
+    <h1>Sign in</h1>
+    <p *ngIf="message" [ngClass]="messageClass" role="status">{{ message }}</p>
+    <form [formGroup]="form" (ngSubmit)="onLoginSubmit()">
+      <div class="fields">
+        <label class="field full-field">Email address
+          <input type="email" formControlName="email" autocomplete="email" placeholder="you@example.com" required>
+          <span class="field-error" *ngIf="form.controls.email.invalid && form.controls.email.touched">Enter a valid email address.</span>
+        </label>
+        <label class="field full-field">Password
+          <input type="password" formControlName="password" autocomplete="current-password" required>
+          <span class="field-error" *ngIf="form.controls.password.invalid && form.controls.password.touched">Password is required.</span>
+        </label>
+      </div>
+      <button class="action" type="submit" [disabled]="form.invalid || submitting">{{ submitting ? 'Signing in…' : 'Sign in' }} <mat-icon>arrow_forward</mat-icon></button>
+    </form>
+    <p class="switch">New to IMS? <a routerLink="/signup">Create an account</a></p>
+  </section>
+</main>

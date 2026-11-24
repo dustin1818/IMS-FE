@@ -9,7 +9,8 @@ import { EmployeeService } from 'src/app/services/employee/employee.service';
   styleUrls: ['./employee.component.css']
 })
 export class EmployeeComponent implements OnInit {
-  filterTerm: any;
+  filterTerm = '';
+  listState: 'loading' | 'ready' | 'error' = 'loading';
   employeeList: Employee[] = [];
 
   p:number = 1;
@@ -26,19 +27,15 @@ export class EmployeeComponent implements OnInit {
     this.getEmployee();
   }
 
-  searchFilter() {
-    this._employeeService.getEmployee().subscribe(filterTerm => {
-      console.log(filterTerm);
-      this.employeeList = filterTerm
-    })
-  }
 
 
   getEmployee() {
     this._employeeService.getEmployee().subscribe(data => {
       console.log(data);
       this.employeeList = data;
+      this.listState = 'ready';
     }, error => {
+      this.listState = 'error';
       console.log(error);
     })
   }

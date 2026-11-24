@@ -1,47 +1,25 @@
-
-        <div class="container mt-5">
-            <div class="row p-4">
-                  <!-- Header ---section -->
-                  <h1 class="title text-center"> {{ title | uppercase }}</h1>
-
-                  <form class="mt-3 d-flex flex-column" [formGroup]="employeeForm" (ngSubmit)="addEmployee()" >
-
-                      <!-- Employee-no ---section -->
-                      <div class="mb-3">
-                          <label class="mb-4 mt-5">Employee Number</label>
-                          <input type="tel" formControlName="employee_no" class="form-control form-control-lg p-3"
-                              placeholder="employee_no" maxlength="3">
-                      </div>
-
-                       <!-- NAME ---section -->
-                      <div class="mb-3">
-                          <label class="mb-4">Name</label>
-                          <input type="text" formControlName="name" class="form-control form-control-lg p-3"
-                              placeholder="name">
-   
-                      </div>
-
-                     <!-- POSITION ---section -->
-                      <div class="mb-3">
-                        <label class="mb-4">Role</label>
-                        <input type="text" formControlName="role" class="form-control form-control-lg p-3"
-                        placeholder="profession">
-                    </div>
-
-                      <!-- DEPARTMENT ---section -->
-                      <div class="mb-3">
-                        <label class="mb-4">Department</label>
-                        <select class="form-control p-4"   formControlName="department"  placeholder="ex. office, warehouse, delivery">
-                          <option *ngFor="let r of departmentOptions" [ngValue]="r">
-                              {{r}}
-                          </option>
-                      </select>
-                    </div>
-
-                      <!-- Buttons ---section -->
-                           <button style="font-size: 1.8rem;" type="submit" [disabled]="employeeForm.invalid" class="btn btn-primary mt-5">Accept</button>
-                           <button style="font-size: 1.8rem;" (click)="return()" type="reset"  class="btn btn-secondary btn-lg float-start mt-3">Cancel</button>
-
-                  </form>
-              </div>
-          </div>
+<main class="page record-page">
+  <a class="text-action back-link" routerLink="/user/mainbar/employee"><mat-icon>arrow_back</mat-icon>Employees</a>
+  <header class="page-heading"><h1>{{ title }}</h1></header>
+  <div class="surface record-layout">
+    <figure class="record-art grid-art"><img src="assets/images/IMS-Employee (1).png" alt=""></figure>
+    <form [formGroup]="employeeForm" (ngSubmit)="addEmployee()">
+      <h2>Employee details</h2>
+      <div class="fields">
+          <label class="field">Employee number<input formControlName="employee_no" type="tel" maxlength="3" required></label>
+          <label class="field">Full name<input formControlName="name" type="text" required></label>
+          <label class="field">Role<input formControlName="role" type="text" required></label>
+          <label class="field">Department
+            <select formControlName="department" required>
+              <option value="" disabled>Select a department</option>
+              <option *ngFor="let option of departmentOptions" [ngValue]="option">{{ option }}</option>
+            </select>
+          </label>
+      </div>
+      <div class="form-actions">
+        <button type="button" class="action secondary" (click)="return()">Cancel</button>
+        <button type="submit" class="action" [disabled]="employeeForm.invalid">Save employee</button>
+      </div>
+    </form>
+  </div>
+</main>

@@ -1,72 +1,38 @@
-<div class="container w-100 d-flex flex-column  align-items-center w-100 ">
-
-  <header>
-    <link rel="stylesheet"
-      href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
-    <h2 class="head-text text-left">Dashboard</h2>
-    <hr class="w-100">
-
-    <h1 class="animate__animated  animate__rollIn">Welcome {{userProfile['username'] }} !</h1>
-
-    <main>
-      <!-- <div class="container-fluid "> -->
-      <div class="row gy-2 mb-3 d-flex justify-content-center align-items-center">
-        <div class="row">
-          <!-- employee -->
-          <div class="card-body">
-            <div class="employee-img">
-              <img src="../../../assets/images/employee1.png">
-              <h2>Employee</h2>
-              <span class="label">Number of employees</span>
-            </div>
-            <div class="container-quantity d-flex justify-content-center align-items-center">
-              <span
-                class="box-quantity d-flex flex-column align-items-center justify-content-center">{{employeeList}}</span>
-            </div>
-          </div>
-        </div>
-
-
-
-        <div class="row">
-          <div class="card-body">
-            <div>
-              <img src="../../../assets/images/supplier-icon.jpg">
-              <h2>Supplier</h2>
-              <span class="label">Number of Suppliers</span>
-            </div>
-            <div class="container-quantity d-flex justify-content-center align-items-center">
-              <span
-                class="box-quantity d-flex flex-column align-items-center justify-content-center">{{supplierList}}</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="card-body d-flex w-50">
-            <div>
-              <img src="../../../assets/images/inventory.png">
-              <h2>Inventory</h2>
-              <span class="label" >Number of Inventory</span>
-            </div>
-            <div class="box-quantity-container d-flex justify-content-end w-50">
-              <div class="order-box d-flex flex-column align-items-center">
-                <span>Purchased Products</span>
-                <span class="box-quantity d-flex flex-column align-items-center justify-content-center"
-                  style="margin-right: 10px; color: #ebebeb;">{{orderName}}</span>
-              </div>
-
-              <div class="order-box d-flex flex-column align-items-center">
-                <span>Sample Products</span>
-                <span class="box-quantity d-flex flex-column align-items-center justify-content-center"
-                  style="margin-right: 10px;">{{productList}}</span>
-              </div>
-
-            </div>
-
-          </div>
-        </div>
-      </div>
-    </main>
+<main class="page">
+  <header class="dashboard-banner">
+    <div><h1>Dashboard</h1><p>Welcome back{{ userProfile['username'] ? ', ' + userProfile['username'] : '' }}.</p></div>
+    <img src="assets/images/warehouse-banner.webp" width="1200" height="700" decoding="async" alt="">
   </header>
-</div>
+  <section class="metrics" aria-label="Workspace totals">
+    <a class="metric surface" routerLink="../inventory"><mat-icon>layers</mat-icon><strong>{{ productCount ?? '—' }}</strong><span>Sample products</span></a>
+    <a class="metric surface" routerLink="../inventory"><mat-icon>move_to_inbox</mat-icon><strong>{{ purchasedCount ?? '—' }}</strong><span>Purchased products</span></a>
+    <a class="metric surface" routerLink="../supplier-list"><mat-icon>local_shipping</mat-icon><strong>{{ supplierCount ?? '—' }}</strong><span>Suppliers</span></a>
+    <a class="metric surface" routerLink="../employee"><mat-icon>people_outline</mat-icon><strong>{{ employeeCount ?? '—' }}</strong><span>Employees</span></a>
+  </section>
+  <section class="surface stock">
+    <header class="panel-head"><h2>Sample inventory</h2><a class="text-action" routerLink="../inventory">View inventory <mat-icon>arrow_forward</mat-icon></a></header>
+    <div class="table-scroll" *ngIf="previewRows.length">
+      <table class="data-table" aria-label="Sample inventory overview" [attr.aria-busy]="productCount == null">
+        <thead><tr><th scope="col">Product</th><th scope="col">Type</th><th scope="col">Quantity</th><th scope="col">Price</th></tr></thead>
+        <tbody>
+          <tr *ngFor="let item of previewRows" [attr.aria-hidden]="item ? null : true">
+            <ng-container *ngIf="item; else loadingCells">
+              <td><a class="product-link" [routerLink]="['../inventory/product-modal', item._id]"><img src="assets/images/product-thumb.webp" width="36" height="36" decoding="async" alt="">{{ item.product_name }}</a></td>
+              <td data-label="Type">{{ item.product_type }}</td>
+              <td data-label="Quantity">{{ item.quantity | number }} pcs</td>
+              <td data-label="Price">{{ item.price | currency }}</td>
+            </ng-container>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <ng-template #loadingCells>
+      <td><span class="product-link"><span class="loading-thumb"></span><span class="loading-line"></span></span></td>
+      <td data-label="Type"><span class="loading-line"></span></td>
+      <td data-label="Quantity"><span class="loading-line"></span></td>
+      <td data-label="Price"><span class="loading-line"></span></td>
+    </ng-template>
+    <p *ngIf="productCount == null && !productsUnavailable" class="cdk-visually-hidden" role="status">Loading sample inventory…</p>
+    <p *ngIf="!previewRows.length" class="empty" role="status">{{ productsUnavailable ? 'Sample inventory is unavailable.' : 'No sample products yet.' }}</p>
+  </section>
+</main>

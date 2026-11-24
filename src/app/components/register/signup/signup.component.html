@@ -1,124 +1,42 @@
-<main>
-<nav>
-    <div class="container-fluid d-flex align-items-center justify-content-between" style="padding: 7px 10px ;">
-
-        <div class="logo-container d-flex justify-content-center align-items-center">
-            <img src="../../../assets/images/IMS.svg" alt="" class="logo">
-            <h2 class="logo-text">IMS</h2>
-        </div>
-
-        <form class="d-flex btn-container">
-            <button class="btn btn-outline-light me-2" [routerLink]="['/welcome']"
-                routerLinkActive="signup">Home</button>
-            <button class="btn btn-outline-tiffany my-2 me-2 my-sm-0" [routerLink]="['/signin']"
-                routerLinkActive="signin">Login</button>
-        </form>
-    </div>
-</nav>
-
-<div class="row mt-12">
-
-    <div class="second-row col-md-8 order-md-1 mx-auto my-12">
-
-        <!-- Custom Success/Error Message -->
-        <div class=" show-hide-message mt-5">
-            <div [ngClass]="messageClass">
-                {{ message }}
-            </div>
-        </div>
-
-        <h1 style="margin: 50px 0 !important;" class="my-5 mb-5 font-weight-normal"> Please Register</h1>
-
-        <form [formGroup]="registerForm" class="needs-validation w-100 form-inline " novalidate
-            (submit)="onRegisterSubmit()">
-
-            <div class="row">
-                <!-- username -->
-                <div class="form-group-lg col-sm-12 col-md-6">
-                    <h2 for="username">Username</h2>
-                    <input type="username" name="username" formControlName="username" class="form-control input-lg "
-                        placeholder="JohnDoe" style="height:40px">
-                    <ul class="help-block" style="list-style: none;">
-                        <li
-                            *ngIf="registerForm.controls.username.errors?.required && registerForm.controls.username.dirty">
-                            Field Username is required.
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="form-group-lg col-sm-12 col-md-6">
-                    <h2 class="lb-lg" for="position">Profession</h2>
-                    <input type="position" name="position" formControlName="position" class="form-control input-lg "
-                        placeholder="product tester" style="height:40px">
-                    <ul class="help-block" style="list-style: none;">
-                        <li
-                            *ngIf="registerForm.controls.position.errors?.required && registerForm.controls.position.dirty">
-                            Profession is required.
-                        </li>
-                    </ul>
-                </div>
-
-
-
-                <div class="form-group-lg col-sm-12 mb-3 col-md-12">
-                    <h2 class="lb-lg" for="email">Email</h2>
-                    <input type="email" name="email" formControlName="email" class="form-control input-lg"
-                        placeholder="you@example.com" style="height:40px; padding: 25px 10px;">
-                    <ul class="help-block" style="list-style: none;">
-                        <li *ngIf="registerForm.controls.email.errors?.required && registerForm.controls.email.dirty">
-                            Email is required.
-                        </li>
-                    </ul>
-                </div>
-
-
-                <div class="form-group-lg col-sm-12 col-md-4">
-                    <h2 for="inputPassword4">Password</h2>
-                    <input type="password" name="password" formControlName="password" class="form-control input-lg "
-                        placeholder="..... " style="height:40px">
-                    <ul class="help-block" style="list-style: none;">
-                        <li
-                            *ngIf="registerForm.controls.password.errors?.required && registerForm.controls.password.dirty">
-                            Password is
-                            required.</li>
-                    </ul>
-                </div>
-
-
-
-
-
-                <div class="form-group-lg mb-3 col-sm-12 col-md-4">
-                    <h2 class="lb-lg" for="address">Address</h2>
-                    <input type="text" name="location" formControlName="location" class="form-control input-lg"
-                        placeholder="1234 Main St" style="height:40px" required>
-                    <ul class="help-block" style="list-style: none;">
-                        <li
-                            *ngIf="registerForm.controls.location.errors?.required && registerForm.controls.location.dirty">
-                            Address is
-                            required.</li>
-                    </ul>
-                </div>
-
-                <div class="form-group-lg mb-3 col-sm-12 col-md-4">
-                    <h2 class="lb-lg" for="contact">Contact</h2>
-                    <input type="tel" name="phoneNo" formControlName="phoneNo" class="form-control input-lg"
-                        placeholder="+977.." style="height:40px" required pattern="\d*" maxlength="11">
-                    <ul class="help-block" style="list-style: none;">
-                        <li
-                            *ngIf="registerForm.controls.phoneNo.errors?.required && registerForm.controls.phoneNo.dirty">
-                            Contact is
-                            required.
-                        </li>
-                    </ul>
-                </div>
-
-                <hr class="my-5">
-                <input class="btn btn-primary btn-register btn-lg btn-block" type="submit" value="Register ">
-            </div>
-        </form>
-
-    </div>
-</div>
-
+<app-public-header page="signup"></app-public-header>
+<main class="auth-layout">
+  <aside class="auth-visual">
+    <h2>Inventory Management System</h2>
+    <img src="assets/images/welcomepage.svg" alt="">
+  </aside>
+  <section class="auth-panel">
+    <h1>Create an account</h1>
+    <p *ngIf="message" [ngClass]="messageClass" role="status">{{ message }}</p>
+    <form [formGroup]="registerForm" (ngSubmit)="onRegisterSubmit()">
+      <div class="fields">
+        <label class="field">Username
+          <input type="text" formControlName="username" autocomplete="username" required>
+          <span class="field-error" *ngIf="registerForm.controls.username.invalid && registerForm.controls.username.touched">Username is required.</span>
+        </label>
+        <label class="field">Profession
+          <input type="text" formControlName="position" autocomplete="organization-title" required>
+          <span class="field-error" *ngIf="registerForm.controls.position.invalid && registerForm.controls.position.touched">Profession is required.</span>
+        </label>
+        <label class="field full-field">Email address
+          <input type="email" formControlName="email" autocomplete="email" placeholder="you@example.com" required>
+          <span class="field-error" *ngIf="registerForm.controls.email.invalid && registerForm.controls.email.touched">Enter a valid email address.</span>
+        </label>
+        <label class="field">Address
+          <input type="text" formControlName="location" autocomplete="street-address" required>
+          <span class="field-error" *ngIf="registerForm.controls.location.invalid && registerForm.controls.location.touched">Address is required.</span>
+        </label>
+        <label class="field">Phone number
+          <input type="tel" formControlName="phoneNo" autocomplete="tel" inputmode="numeric" pattern="[0-9]*" maxlength="11" required>
+          <span class="field-error" *ngIf="registerForm.controls.phoneNo.invalid && registerForm.controls.phoneNo.touched">Enter up to 11 digits.</span>
+        </label>
+        <label class="field full-field">Password
+          <input type="password" formControlName="password" autocomplete="new-password" required>
+          <span class="hint">Use 8–30 characters with uppercase and lowercase letters, a number, and a symbol such as # or !.</span>
+          <span class="field-error" *ngIf="registerForm.controls.password.invalid && registerForm.controls.password.touched">Check the password requirements.</span>
+        </label>
+      </div>
+      <button class="action" type="submit" [disabled]="registerForm.invalid || submitting">{{ submitting ? 'Registering…' : 'Register' }} <mat-icon>arrow_forward</mat-icon></button>
+    </form>
+    <p class="switch">Already have an account? <a routerLink="/signin">Sign in</a></p>
+  </section>
 </main>

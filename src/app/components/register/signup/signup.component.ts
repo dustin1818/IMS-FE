@@ -7,7 +7,7 @@ import { AuthService } from 'src/app/services/auth/auth.service';
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.css']
+  styleUrls: ['../auth-layout.css']
 })
 export class SignupComponent {
 
@@ -55,6 +55,7 @@ export class SignupComponent {
   }
 
   onRegisterSubmit() {
+    if (this.registerForm.invalid || this.submitting) return;
     this.submitting = true;
     const user = {
       username: this.registerForm.get('username')?.value,
@@ -81,9 +82,11 @@ export class SignupComponent {
          this.router.navigate(['/signin']); // Redirect to login view
        }, 2000);
      }
-   })
+   }, () => {
+     this.messageClass = 'alert alert-danger';
+     this.message = 'Unable to register. Please try again.';
+     this.submitting = false;
+   });
  }
 
   }
-
-

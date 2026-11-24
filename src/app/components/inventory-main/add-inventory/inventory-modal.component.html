@@ -1,40 +1,25 @@
-<div class="container ">
-<div class="row mt-5">
-        <form [formGroup]="productform" class="needs-validation p-5 d-flex flex-column">
-
-          <h1 class="mb-5 text-center">Create Sample Product</h1>
-            <div class="row mt-5">
-                <div class="form-group col-md-12">
-                    <label class="my-5 mb-4 " for="product_name">Product Name</label>
-                    <input type="text" name="product_name" class="form-control p-4" formControlName="product_name" 
-                        placeholder="product name...">
-                </div>
-
-                <div class="form-group col-md-12">
-                    <label class="my-5 mb-4" for="product_type">Product Type</label>
-                    <select class="form-control p-4" name="product_type"  formControlName="product_type"  placeholder="ex. glass, cans, plastic">
-                        <option *ngFor="let r of productOptions" [ngValue]="r">
-                            {{r}}
-                        </option>
-                    </select>
-                </div>
-
-                <div class="form-group mb-3 col-md-12  mt-3">
-                    <label class="my-5 mb-4"  >Quantity</label>
-                    <input type="number" name="quantity" class="form-control p-4"  placeholder="quantity..."
-                        required min="0" formControlName="quantity">
-                </div>
-
-                <div class="form-group mb-3 col-md-12  mt-3">
-                    <label class="my-5 mb-4"  for="address">Price</label>
-                    <input type="number" name="price" class="form-control p-4"  placeholder="price..."
-                        required min="0" formControlName="price">
-
-                </div>
-
-            </div>
-                <button style="font-size: 1.8rem;" class="btn btn-primary btn-block w-100 mt-5 mb-1" type="submit" value="Register"  (click)="addProduct()">Add Product </button>
-                <button style="font-size: 1.8rem;" class="btn btn-secondary mb-3 mt-1 w-100 " (click)="return()">Cancel</button>
-            </form>
-    </div>
-</div>
+<main class="page record-page">
+  <a class="text-action back-link" routerLink="/user/mainbar/inventory"><mat-icon>arrow_back</mat-icon>Inventory</a>
+  <header class="page-heading"><h1>Add sample product</h1></header>
+  <div class="surface record-layout">
+    <figure class="record-art grid-art"><img src="assets/images/IMS -BOX.png" alt=""></figure>
+    <form [formGroup]="productform" (ngSubmit)="addProduct()">
+      <h2>Product details</h2>
+      <div class="fields">
+          <label class="field">Product name<input formControlName="product_name" type="text" required></label>
+          <label class="field">Product type
+            <select formControlName="product_type" required>
+              <option value="" disabled>Select a type</option>
+              <option *ngFor="let option of productOptions" [ngValue]="option">{{ option }}</option>
+            </select>
+          </label>
+          <label class="field">Quantity<input formControlName="quantity" type="number" min="0" required></label>
+          <label class="field">Price ($)<input formControlName="price" type="number" step="0.01" min="0" required></label>
+      </div>
+      <div class="form-actions">
+        <button type="button" class="action secondary" (click)="return()">Cancel</button>
+        <button type="submit" class="action" [disabled]="productform.invalid">Add product</button>
+      </div>
+    </form>
+  </div>
+</main>

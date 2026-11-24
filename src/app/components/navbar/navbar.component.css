@@ -1,141 +1,23 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap");
-
-span {
-  font-size: 1.3rem;
-  font-family: "Montserrat", sans-serif !important;
-}
-
-.logo-container {
-  max-width: 168px;
-  width: 100%;
-  position: relative;
-  margin-left: 8px;
-  cursor: pointer;
-}
-
-.logo {
-  height: 92px;
-  margin-bottom: 10px;
-  position: absolute;
-  right: 95px;
-}
-
-.logo-text {
-  font-family: "Montserrat", sans-serif;
-  font-weight: 900;
-  font-size: 3.4rem;
-  margin-top: 9px;
-  z-index: 1;
-  font-size: 4.8rem;
-}
-
-.btn {
-  font-size: 1.5rem !important;
-  font-family: "Montserrat", sans-serif;
-}
-
-.btn-outline-tiffany {
-  border: solid 2px #71eeea !important ;
-  background-color: #71eeea !important;
-  color: #363636;
-}
-
-.btn-outline-tiffany:hover {
-  border: solid 2px #098383 !important  ;
-  color: #f1f7f6 !important;
-  background-color: #098383 !important;
-}
-
-mat-toolbar {
-  background: #0abab5;
-  color: white;
-  padding: 42px 0px !important;
-}
-
-mat-sidenav {
-  margin: 0px;
-  width: 195px;
-  border-right: none;
-  background: #0abab5;
-  color: white;
-  border-radius: 0px;
-  padding: 16px;
-  text-align: center;
-}
-
-mat-sidenav-container {
-  height: 100%;
-  max-height: 100%;
-}
-
-.menu-button {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  font-size: 1rem;
-}
-
-mat-icon {
-  margin-right: 8px;
-}
-
-.avatar {
-  margin-top: 16px;
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-}
-
-.name {
-  margin-top: 8px;
-  font-weight: normal;
-  font-size: 1.6rem;
-}
-
-.designation {
-  margin-top: 2px;
-  font-size: 0.7rem;
-  color: lightgrey;
-  font-size: 1.3rem;
-}
-
-mat-divider {
-  margin-top: 16px;
-  margin-bottom: 16px;
-  background-color: rgba(255, 255, 255, 0.5);
-}
-
-.btn-mobile {
-  visibility: collapse;
-}
-
-/*
-mobile responsive 576 below */
-
-@media only screen and (max-width: 577px) {
-  .btn-outline-light {
-    height: 35px;
-  }
-
-  .btn-container {
-    display: flex;
-    align-items: center;
-  }
-}
-
-@media only screen and (max-width: 420px) {
-  .btn-container {
-    display: none !important;
-  }
-  .button-mobile-box {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 25px;
-  }
-
-  .btn-mobile {
-    visibility: visible;
-  }
+.shell { height: 100vh; height: 100dvh; background: var(--paper); color: var(--ink); }
+mat-sidenav-content { scrollbar-gutter: stable; }
+.sidebar { width: 224px; background: var(--deep); color: white; border: 0; }
+.rail { min-height: 100%; display: flex; flex-direction: column; padding: 14px 16px 18px; }
+.rail .brand { color: white; margin: 0 10px 27px; align-self: flex-start; }
+.nav-group { display: grid; gap: 4px; padding: 17px 0; border-top: 1px solid #3c6262; }
+.nav-group a, .rail-footer button { display: flex; align-items: center; gap: 14px; border: 0; border-radius: 7px; padding: 12px 14px; background: transparent; color: #d1e4e0; font-size: .9rem; font-weight: 550; text-align: left; line-height: 1.4; }
+.nav-group a:hover, .rail-footer button:hover { background: #205458; color: white; }
+.nav-group .current { background: #baf4e6; color: var(--deep); font-weight: 700; }
+.rail :focus-visible { outline-color: var(--aqua); }
+.rail-footer { border-top: 1px solid #3c6262; padding-top: 12px; margin-top: auto; display: grid; }
+.workspace-bar { min-height: 69px; padding: 10px clamp(16px,3.8vw,60px); display: flex; align-items: center; justify-content: space-between; gap: 12px; background: white; border-bottom: 1px solid var(--line); }
+.workspace-bar > div, .account { display: flex; align-items: center; gap: 10px; }
+.workspace-bar > div { font-size: .87rem; color: var(--muted); font-weight: 600; }
+.account { color: var(--ink); font-size: .86rem; font-weight: 700; min-width: 0; }
+.account img { width: 37px; height: 37px; border-radius: 50%; }
+.account span { display: block; max-width: 180px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.account small { display: block; font-size: .72rem; color: var(--muted); font-weight: 500; }
+@media (max-width: 600px) {
+ .workspace-bar { padding: 8px 14px 8px 7px; min-height: 56px; }
+ .workspace-bar > div { gap: 3px; }
+ .account span { display: none; }
 }

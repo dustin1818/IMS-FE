@@ -9,7 +9,7 @@ import { Location } from '@angular/common';
 @Component({
   selector: 'app-inventory-modal',
   templateUrl: './inventory-modal.component.html',
-  styleUrls: ['./inventory-modal.component.css']
+  styleUrls: ['../../record-form.css']
 })
 export class InventoryModalComponent implements OnInit {
 

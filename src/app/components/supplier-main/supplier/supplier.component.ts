@@ -10,7 +10,8 @@ import { SupplierService } from 'src/app/services/supplier/supplier.service';
   styleUrls: ['./supplier.component.css']
 })
 export class SupplierComponent implements OnInit {
-  filterTerm: any;
+  filterTerm = '';
+  listState: 'loading' | 'ready' | 'error' = 'loading';
   supplierList: Supplier[] = [];
 
   p:number = 1;
@@ -20,22 +21,17 @@ export class SupplierComponent implements OnInit {
 
   ngOnInit(): void {
     this.getSupplier();
-    this.searchFilter();
   }
 
-  searchFilter() {
-    this._supplierService.getSupplier().subscribe(filterTerm => {
-      console.log(filterTerm);
-      this.supplierList = filterTerm
-    })
-  }
 
 
   getSupplier() {
     this._supplierService.getSupplier().subscribe(data => {
       console.log(data);
       this.supplierList = data;
+      this.listState = 'ready';
     }, error => {
+      this.listState = 'error';
       console.log(error);
     })
   }

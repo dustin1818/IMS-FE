@@ -1,0 +1,16 @@
+.auth-layout { max-width: 1150px; margin: auto; padding: clamp(28px,5vw,68px) clamp(16px,4vw,54px); display: grid; grid-template-columns: minmax(0,.86fr) minmax(0,1.14fr); align-items: stretch; }
+.auth-visual { background-color: var(--deep); border-radius: 18px 0 0 18px; display: flex; flex-direction: column; justify-content: space-between; overflow: hidden; }
+.auth-visual h2 { color: white; font-size: clamp(1.9rem,3.4vw,3.2rem); padding: clamp(22px,3.5vw,44px); max-width: 13ch; line-height: 1.06; }
+.auth-visual img { width: 100%; }
+.auth-panel { background: white; padding: clamp(24px,4.3vw,60px); border: 1px solid var(--line); border-radius: 0 18px 18px 0; }
+.auth-panel h1 { font-size: clamp(2rem,3.6vw,3.2rem); margin-bottom: 28px; }
+.auth-panel .action { width: 100%; margin-top: 24px; }
+.auth-panel .switch { text-align: center; color: var(--muted); font-size: .87rem; margin-top: 14px; }
+.switch a { font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
+@media (max-width: 800px) {
+ .auth-layout { grid-template-columns: 1fr; max-width: 620px; }
+ .auth-visual { border-radius: 16px 16px 0 0; height: 100px; flex-direction: row; align-items: center; }
+ .auth-visual h2 { font-size: 1.35rem; padding: 20px; max-width: 16ch; }
+ .auth-visual img { width: 46%; height: 100%; object-fit: cover; }
+ .auth-panel { border-radius: 0 0 16px 16px; }
+}

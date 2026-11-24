@@ -9,7 +9,7 @@ import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-signin',
   templateUrl: './signin.component.html',
-  styleUrls: ['./signin.component.css']
+  styleUrls: ['../auth-layout.css']
 })
 export class SigninComponent implements OnInit {
 
@@ -33,6 +33,7 @@ export class SigninComponent implements OnInit {
   }
 
   onLoginSubmit() {
+    if (this.form.invalid || this.submitting) return;
     this.submitting = true;
     const user = {
       email: this.form.get('email')?.value,
@@ -60,6 +61,10 @@ export class SigninComponent implements OnInit {
         }, 500);
         }
       }
+    }, () => {
+      this.messageClass = 'alert alert-danger';
+      this.message = 'Unable to sign in. Please try again.';
+      this.submitting = false;
     });
   }
  
@@ -73,4 +78,3 @@ export class SigninComponent implements OnInit {
   }
  
 }
- 

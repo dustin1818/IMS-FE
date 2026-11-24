@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { sample } from 'rxjs/operators';
-import { Employee } from 'src/app/models/employee';
-import { Order } from 'src/app/models/orders';
 import { Product } from 'src/app/models/product';
-import { Supplier } from 'src/app/models/supplier';
+import { Order } from 'src/app/models/orders';
 import { EmployeeService } from 'src/app/services/employee/employee.service';
 import { ProductService } from 'src/app/services/product/product.service';
 import { SupplierService } from 'src/app/services/supplier/supplier.service';
@@ -15,58 +12,30 @@ import { AuthenticationService } from 'src/app/services/user-authentication/auth
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-
-  orderName: any;
-
   userProfile = {};
-  employeeList: Employee[] = [];
-  supplierList: Supplier[] = [];
-  orderList: Order[] = [];
-  productList: Product[] = []
+  employeeCount: number;
+  supplierCount: number;
+  purchasedCount: number;
+  private readonly previewLimit = 5;
+  productCount: number;
+  previewRows: (Product | null)[] = Array(this.previewLimit).fill(null);
+  productsUnavailable = false;
 
-  constructor(
-    public _userService: AuthenticationService,
-    public _employeeService: EmployeeService,
-    public _supplierService: SupplierService,
-    public _productService: ProductService
-  ) { }
+  constructor(private users: AuthenticationService, private employees: EmployeeService,
+              private suppliers: SupplierService, private inventory: ProductService) {}
 
   ngOnInit(): void {
-    
-    //username
-    this._userService.getUserProfile().subscribe( profileName => {
-      this.userProfile = profileName
-    }, error => {
-      console.log(error)
-    })
-
-    //employee
-    this._employeeService.getEmployee().subscribe( employeeCount => {
-      this.employeeList = employeeCount.length
-    }, error => {
-      console.log(error)
-    })
-
-    //supplier
-    this._supplierService.getSupplier().subscribe( supplierCount => {
-      this.supplierList = supplierCount.length
-    }, error => {
-      console.log(error)
-    })
-
-    this._productService.getOrders().subscribe(
-      (orderList) => {
-        this._productService.orders = orderList as Order [];
-        this.orderName = this._productService.orders.length
-      });
-
-    this._productService.getProducts().subscribe(
-      (sampleProductList) => {
-        this.productList = sampleProductList.payload.length
-        console.log(this.productList)
-      }, error => {
-        console.log(error)
-      });
+    this.users.getUserProfile().subscribe(profile => this.userProfile = profile);
+    this.employees.getEmployee().subscribe(employees => this.employeeCount = employees.length);
+    this.suppliers.getSupplier().subscribe(suppliers => this.supplierCount = suppliers.length);
+    this.inventory.getOrders().subscribe((orders: Order[]) => this.purchasedCount = orders.length);
+    this.inventory.getProducts().subscribe(result => {
+      const products: Product[] = result.payload;
+      this.productCount = products.length;
+      this.previewRows = products.slice(0, this.previewLimit);
+    }, () => {
+      this.productsUnavailable = true;
+      this.previewRows = [];
+    });
   }
-
 }

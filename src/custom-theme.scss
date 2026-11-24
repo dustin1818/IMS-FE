@@ -28,8 +28,8 @@ $Frontend-theme: mat.define-light-theme((
   )
 ));
 
-// Include theme styles for core and each component used in your app.
-// Alternatively, you can import and @include the theme mixins for each component
-// that you are using.
-@include mat.all-component-themes($Frontend-theme);
+// The workspace uses Material's navigation drawer and icon components.
+@include mat.core-theme($Frontend-theme);
+@include mat.sidenav-theme($Frontend-theme);
+@include mat.icon-theme($Frontend-theme);
 

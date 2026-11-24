@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
-import { SupplierService } from 'src/app/services/supplier/supplier.service';
 import { ProductService } from 'src/app/services/product/product.service';
 import { Product } from 'src/app/models/product';
 import { Order } from '../../../models/orders';
-import { ViewportScroller } from '@angular/common';
 
 @Component({
   selector: 'app-inventory',
@@ -12,41 +10,27 @@ import { ViewportScroller } from '@angular/common';
   styleUrls: ['./inventory.component.css']
 })
 export class InventoryComponent implements OnInit {
-  filterTerm: any;
-  currentPage:1;
-  productList : Product[] = []
-  orderList: Order[]  = []
-  p:number = 1;
-  payload: any
-  id: number
-  messageClass:any
-  message:any
+  filterTerm = '';
+  productList: Product[] = [];
+  orderList: Order[] = [];
+  sampleState: 'loading' | 'ready' | 'error' = 'loading';
+  orderState: 'loading' | 'ready' | 'error' = 'loading';
+  message = '';
 
-  constructor(
-    private scroller: ViewportScroller,
-    public _productService:ProductService,
-    private _supplierService: SupplierService,
-    private toastr: ToastrService) { }
+  constructor(private _productService: ProductService, private toastr: ToastrService) {}
 
   ngOnInit(): void {
     this.getProducts();
     this.getOrders();
-    console.log(this.getOrders());
   }
 
-  searchFilter() {
-    this._productService.getProducts().subscribe(filterTerm => {
-      console.log(filterTerm);
-      this.productList = filterTerm
-    })
-  }
 
   getProducts(){
     this._productService.getProducts().subscribe(data => {
-      console.warn(data)
-      this.productList = data.payload;  
-    }, error =>{
-    console.warn(error);
+      this.productList = data.payload;
+      this.sampleState = 'ready';
+    }, () => {
+      this.sampleState = 'error';
     })
   }
 
@@ -65,7 +49,6 @@ export class InventoryComponent implements OnInit {
         })
         this.getProducts()      
     }, error => {
-        this.messageClass = "alert alert-danger"
         this.message = "Error in Removing Product."
         console.warn(error)
     });
@@ -74,19 +57,18 @@ export class InventoryComponent implements OnInit {
   
   //ORDERS
   getOrders(){
-    this._productService.getOrders().subscribe(
-      (res) =>{
-      this._productService.orders = res as Order[];
-    });
+    this._productService.getOrders().subscribe((orders: Order[]) => {
+      this.orderList = orders;
+      this.orderState = 'ready';
+    }, () => this.orderState = 'error');
   }
 
   goDown1() {
     document.getElementById("main-container").scrollIntoView({
-      behavior: "smooth",
+      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
       block: "start",
       inline: "nearest"
     });
   }
 
 }
-

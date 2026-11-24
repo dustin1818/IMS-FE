@@ -1,42 +1,20 @@
-<div class="profile d-flex flex-column p-5">
-
-  <h1 class="profile-head-text text-dark pt-3 pl-3 animate__animated  animate__rollIn">Profile</h1>
-  <hr class="line-head">
-
-  <div class="profile-details-container ">
-    <div class="card-container pb-4 ">
-      <div class="row card-body-container d-flex flex-row   justify-content-center align-items-center mt-5">
-        <!-- image container -->
-        <div class="img-container d-sm-flex justify-content-sm-center col-sm-10 col-lg-5  mb-sm-5 ">
-          <img class="img-fluid animate__animated animate__bounceInLeft" src="../../../assets/images/IMS-Employee (1).png" style="max-height: 400px;">
-        </div>
-        <!-- user-container -->
-        <div class="user-profile-details p-5 col-sm-10 col-lg-5  ">
-          <div class="border-head" style="font-size: 2.5rem;">
-            <h1 >User Details</h1>
-          </div>
-          <hr class="my-5 profile-details-seperator">
-
-          <!-- row for user details -->
-          <div class="row ">
-            <div class="details-row1 d-flex flex-column col-5" style="margin-left: 10px;">
-              <span class="mb-5">Username:</span>
-              <span class="mb-5">Position: </span>
-              <span class="mb-5">Email: </span>
-              <span class="mb-5">Location: </span>
-              <span class="mb-5">Phone Number: </span>
-            </div>
-
-            <div class="details-row2 d-flex flex-column col-5">
-              <span class="mb-5">{{userProfile['username'] }}</span>
-              <span class="mb-5">{{userProfile['position'] }}</span>
-              <span class="mb-5">{{userProfile['email']}}</span>
-              <span class="mb-5">{{userProfile['location'] }}</span>
-              <span class="mb-5">{{userProfile['phoneNo'] }}</span>
-            </div>
-          </div>
-        </div>
-      </div>
+<main class="page">
+  <header class="page-heading"><h1>Profile</h1></header>
+  <section class="surface profile-card">
+    <header class="identity">
+      <div class="portrait grid-art"><img src="assets/images/IMS-Employee (1).png" alt=""></div>
+      <h2>{{ userProfile['username'] || 'User profile' }}</h2>
+      <p>{{ userProfile['position'] }}</p>
+    </header>
+    <div class="contact-details">
+      <h2>Account details</h2>
+      <dl>
+        <div><dt><mat-icon>person_outline</mat-icon>Username</dt><dd>{{ userProfile['username'] || '—' }}</dd></div>
+        <div><dt><mat-icon>work</mat-icon>Position</dt><dd>{{ userProfile['position'] || '—' }}</dd></div>
+        <div><dt><mat-icon>mail_outline</mat-icon>Email address</dt><dd>{{ userProfile['email'] || '—' }}</dd></div>
+        <div><dt><mat-icon>location_on</mat-icon>Location</dt><dd>{{ userProfile['location'] || '—' }}</dd></div>
+        <div><dt><mat-icon>call</mat-icon>Phone number</dt><dd>{{ userProfile['phoneNo'] || '—' }}</dd></div>
+      </dl>
     </div>
-
-  </div>
+  </section>
+</main>

@@ -1,0 +1,16 @@
+.record-page { max-width: 1150px; }
+.back-link { margin: 0 0 12px; }
+.record-layout { display: grid; grid-template-columns: minmax(170px,.58fr) minmax(0,1.42fr); overflow: hidden; }
+.record-art { display: grid; place-items: center; padding: 20px; }
+.record-art img { width: 92%; max-width: 245px; }
+.record-layout form { padding: clamp(22px,3.4vw,46px); }
+.record-layout h2 { margin-bottom: 25px; }
+@media (max-width: 980px) {
+ .record-layout { grid-template-columns: minmax(140px,.45fr) minmax(0,1.55fr); }
+}
+@media (max-width: 650px) {
+ .record-layout { grid-template-columns: 1fr; }
+ .record-art { height: 94px; padding: 5px; }
+ .record-art img { width: auto; height: 100%; max-height: 84px; }
+ .form-actions .action { flex: 1; }
+}

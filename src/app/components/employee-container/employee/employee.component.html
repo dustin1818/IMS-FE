@@ -1,49 +1,30 @@
-<div class="container mt-5 w-100 h-100">
-    <div class="employee-head-container d-flex justify-content-between align-items-center">
-        <h2 class="employee-head-text  animate__animated  animate__rollIn">Employee Management</h2>
-        <button class="btn btn-employee" routerLink="employee-modal" routerLinkActive="active">+ Add Employee</button>
+<main class="page">
+  <header class="page-heading">
+    <h1>Employees</h1>
+    <a class="action" routerLink="employee-modal"><mat-icon>add</mat-icon>Add employee</a>
+  </header>
+  <section class="surface directory" *ngIf="employeeList | filter:filterTerm as matches">
+    <header class="panel-head">
+      <h2>Team directory <span *ngIf="listState === 'ready'" class="count">{{ matches.length }}</span></h2>
+      <div class="search-box">
+        <mat-icon>search</mat-icon>
+        <input type="text" aria-label="Search employees" placeholder="Search employees" [(ngModel)]="filterTerm" (ngModelChange)="p = 1">
+        <button *ngIf="filterTerm" class="icon-action" type="button" aria-label="Clear search" (click)="filterTerm = ''; p = 1"><mat-icon>close</mat-icon></button>
+      </div>
+    </header>
+    <div class="people-grid" *ngIf="matches.length">
+      <article class="person-card" *ngFor="let employee of matches | paginate: {itemsPerPage: 3, currentPage: p}">
+        <div class="person-top"><img src="assets/images/Employee.png" alt=""><span class="record-id">#{{ employee.employee_no }}</span></div>
+        <h3>{{ employee.name }}</h3>
+        <p>{{ employee.role }}</p>
+        <div><span class="tag">{{ employee.department }}</span></div>
+        <footer>
+          <a class="text-action" [routerLink]="['employee-modal', employee._id]" [attr.aria-label]="'Edit ' + employee.name"><mat-icon>edit</mat-icon>Edit</a>
+          <button type="button" class="icon-action danger" [attr.aria-label]="'Delete ' + employee.name" title="Delete employee" (click)="deleteEmployee(employee._id)"><mat-icon>delete</mat-icon></button>
+        </footer>
+      </article>
     </div>
-
-    <hr>
-    <div class="main-container my-5 w-100 ">
-
-        
-        <div class="search-container d-flex w-100 rounded position-relative" style="background-color: rgb(246, 252, 253);">
-            <mat-form-field class="w-100" appearance="fill">
-              <mat-label>Search Employee</mat-label>
-              <input matInput type="text" [(ngModel)]="filterTerm">
-            </mat-form-field>
-            <button class="delete-btn position-absolute border-0" (click)="filterTerm = '' ">
-              <img class="img-fluid" src="../../../assets/images/clear.svg">
-            </button>
-          </div>
-
-
-
-        <div class="row w-100  d-flex flex-row justify-content-center align-items-center m-0">
-            <div class="card my-5 mx-3 p-3" *ngFor="let employee of employeeList | filter: filterTerm | paginate: {itemsPerPage: 3, currentPage: p};">
-                <span>{{ employee.employee_no }}</span>
-                <img style="width: 50%; margin: 0 auto;"class="img-fluid" src="../../../assets/images/Employee.png">
-                <div class="card-body d-flex flex-column justify-content-center align-items-center">
-                    <h1>{{ employee.name }}</h1>
-                    <p style="color: #1bc1c1; font-size: 1.8rem;">{{ employee.role }}</p>
-                    <span class="emp-department">{{ employee.department }}</span>
-                    <hr class="w-100">
-                <button style="font-size: 1.4rem;" data-toggle="tooltip" data-placement="right" title=" Edit Employee"  class="btn btn-primary w-100 p-2 my-2 rounded" [routerLink]= "['employee-modal' , employee._id]" >Edit</button>
-                <button style="font-size: 1.4rem;" data-toggle="tooltip" data-placement="right" title=" Delete Employee" class="btn btn-danger w-100 p-2 rounded" (click)="deleteEmployee(employee._id)" >Delete</button>
-                </div>
-
-            </div>
-        </div>
-
-        <!-- end of main container -->
-    </div>
-
-    <div class="pagination-container mb-5 ">
-    <pagination-controls class="w-100 mb-5 d-flex justify-content-center align-items-center" (pageChange)="p = $event"></pagination-controls>
-    <h5 style="text-align: start; margin-top: 10px;" *ngIf="employeeList.length == 0">No Employee inside the
-      container</h5>
-    </div>
-
-
-</div>
+    <p class="empty" role="status" *ngIf="!matches.length">{{ listState === 'loading' ? 'Loading employees…' : listState === 'error' ? 'The directory is unavailable.' : filterTerm ? 'No employees match your search.' : 'No employees yet.' }}</p>
+    <pagination-controls *ngIf="matches.length" class="pager" [autoHide]="true" [responsive]="true" (pageChange)="p = $event" (pageBoundsCorrection)="p = $event"></pagination-controls>
+  </section>
+</main>

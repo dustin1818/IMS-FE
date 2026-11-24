@@ -1,5 +1,4 @@
-div{
-  background-color: white;
-  position: relative;
-  height: 100vh;
-}
+.missing { display: grid; grid-template-columns: 1fr 1fr; align-items: center; padding: clamp(20px,3.5vw,55px); gap: 30px; }
+.missing img { width: 100%; }
+.missing p { margin: 16px 0 22px; color: var(--muted); }
+@media (max-width: 700px) { .missing { grid-template-columns: 1fr; text-align: center; } .missing img { max-width: 300px; margin: auto; } }

@@ -1,72 +1,34 @@
-<div class="container mt-5 w-100 h-100">
-  <div class="supplier-head-container d-flex justify-content-between align-items-center">
-    <h2 class="supplier-head-text animate__animated  animate__rollIn">Supplier Management</h2>
-    <button class="btn btn-supplier" routerLink="supplier-modal" routerLinkActive="active">+ Add Supplier</button>
-  </div>
-
-  <hr>
-  <div class="main-container w-100 d-flex justify-content-center align-items-center">
-    <div class="row w-100  d-flex flex-md-row-reverse justify-content-around align-items-center">
-
-      <!-- card container -->
-      <div class="card mt-5 col-sm-6  mb-5 p-3">
-
-        <div class="card-body text-center p-2 rounded">
-          <div class="search-container d-flex w-100 rounded position-relative">
-            <mat-form-field class="w-100" appearance="fill">
-              <mat-label>Search supplier</mat-label>
-              <input matInput type="text" [(ngModel)]="filterTerm">
-            </mat-form-field>
-            <button class="delete-btn position-absolute border-0" (click)="filterTerm = '' ">
-              <img class="img-fluid" src="../../../assets/images/clear.svg">
-            </button>
-          </div>
-
-          <table *ngIf="supplierList.length > 0" class="table table-responsive mt-3 text-center">
-            <thead class="pb-5">
-              <tr>
-                <th scope="col">Supplier No.</th>
-                <th scope="col">Name</th>
-                <th scope="col">Phone No.</th>
-                <th scope="col">Location</th>
-                <th style="text-align: center;" scope="col">Icons</th>
-              </tr>
-            </thead>
-
-            <tbody>
-              <tr
-                *ngFor="let supplier of supplierList | filter:filterTerm | paginate: {itemsPerPage: 4, currentPage: p};">
-                <td class="pt-4">{{ supplier.supplier_no }}</td>
-                <td class="pt-4">{{ supplier.name }}</td>
-                <td class="pt-4">{{ supplier.phone_no }}</td>
-                <td class="pt-4">{{ supplier.location}}</td>
-
-                <!-- ICONS -->
-                <td class="icons-container d-flex justify-content-center w-100 ">
-                  <a class="px-1 py-3 " data-toggle="tooltip" data-placement="right" title=" Edit Supplier"
-                    [routerLink]="['supplier-modal' , supplier._id]">
-                    <img class="icon img-fluid rounded " src="../../../assets/images/Edit-btn (1).svg"> </a>
-                  <a (click)="deleteSupplier(supplier._id)" class="px-1 py-3" data-toggle="tooltip"
-                    data-placement="right" title=" Delete Supplier">
-                    <img class="icon img-fluid rounded " src="../../../assets/images/delete-btn (1).svg"> </a>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-
-          <pagination-controls class="w-100 page" (pageChange)="p = $event"></pagination-controls>
-          <h5 style="text-align: start; margin-top: 10px;" *ngIf="supplierList.length == 0">No Supplier inside the
-            container</h5>
-        </div>
+<main class="page">
+  <header class="page-heading">
+    <h1>Suppliers</h1>
+    <a class="action" routerLink="supplier-modal"><mat-icon>add</mat-icon>Add supplier</a>
+  </header>
+  <section class="surface directory" *ngIf="supplierList | filter:filterTerm as matches">
+    <header class="panel-head">
+      <h2>Supplier directory <span *ngIf="listState === 'ready'" class="count">{{ matches.length }}</span></h2>
+      <div class="search-box">
+        <mat-icon>search</mat-icon>
+        <input type="text" aria-label="Search suppliers" placeholder="Search suppliers" [(ngModel)]="filterTerm" (ngModelChange)="p = 1">
+        <button *ngIf="filterTerm" class="icon-action" type="button" aria-label="Clear search" (click)="filterTerm = ''; p = 1"><mat-icon>close</mat-icon></button>
       </div>
-
-      <!-- Illustration - Container -->
-      <div class="illustration-container col-sm-6">
-        <img class="img-fluid" src="../../../assets/images/1.svg" alt="">
-      </div>
+    </header>
+    <div class="table-scroll" *ngIf="matches.length">
+      <table class="data-table" aria-label="Supplier directory">
+        <thead><tr><th scope="col">Supplier no.</th><th scope="col">Name</th><th scope="col">Phone number</th><th scope="col">Location</th><th scope="col">Actions</th></tr></thead>
+        <tbody>
+          <tr *ngFor="let supplier of matches | paginate: {itemsPerPage: 4, currentPage: p}">
+            <td data-label="Supplier no.">#{{ supplier.supplier_no }}</td>
+            <td data-label="Name" class="name-cell">{{ supplier.name }}</td>
+            <td data-label="Phone number">{{ supplier.phone_no }}</td><td data-label="Location">{{ supplier.location }}</td>
+            <td data-label="Actions"><div class="table-actions">
+              <a class="icon-action" title="Edit supplier" [attr.aria-label]="'Edit ' + supplier.name" [routerLink]="['supplier-modal', supplier._id]"><mat-icon>edit</mat-icon></a>
+              <button type="button" class="icon-action danger" title="Delete supplier" [attr.aria-label]="'Delete ' + supplier.name" (click)="deleteSupplier(supplier._id)"><mat-icon>delete</mat-icon></button>
+            </div></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
-    <!-- end of main container -->
-  </div>
-
-
-</div>
+    <p class="empty" role="status" *ngIf="!matches.length">{{ listState === 'loading' ? 'Loading suppliers…' : listState === 'error' ? 'The directory is unavailable.' : filterTerm ? 'No suppliers match your search.' : 'No suppliers yet.' }}</p>
+    <pagination-controls *ngIf="matches.length" class="pager" [autoHide]="true" [responsive]="true" (pageChange)="p = $event" (pageBoundsCorrection)="p = $event"></pagination-controls>
+  </section>
+</main>

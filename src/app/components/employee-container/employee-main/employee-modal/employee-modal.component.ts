@@ -9,7 +9,7 @@ import { Location } from '@angular/common';
 @Component({
   selector: 'app-employee-modal',
   templateUrl: './employee-modal.component.html',
-  styleUrls: ['./employee-modal.component.css']
+  styleUrls: ['../../../record-form.css']
 })
 export class EmployeeModalComponent implements OnInit {
 
